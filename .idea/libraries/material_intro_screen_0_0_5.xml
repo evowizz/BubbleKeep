@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="material-intro-screen-0.0.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/agency.tango.android/material-intro-screen/0.0.5/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/agency.tango.android/material-intro-screen/0.0.5/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/agency.tango.android/material-intro-screen/0.0.5/5815bbacbf893016ee199891bfc7b847adc6fbdf/material-intro-screen-0.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

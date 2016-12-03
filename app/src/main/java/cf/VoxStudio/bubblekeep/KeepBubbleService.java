@@ -19,16 +19,24 @@ The bubble service
 
 package cf.VoxStudio.bubblekeep;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Service;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -47,11 +55,16 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+import static android.content.ContentValues.TAG;
+
 public class KeepBubbleService extends Service {
 
-    WindowManager wm;
-    LinearLayout ll;
+    static WindowManager wm;
+    static LinearLayout ll;
     boolean isMoving;
+    static ImageButton openButton;
+
+
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -61,6 +74,11 @@ public class KeepBubbleService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        SharedPreferences sharedPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("isRunning", true);
+        editor.apply();
 
         wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         ll = new LinearLayout(this);
@@ -77,7 +95,7 @@ public class KeepBubbleService extends Service {
         parameters.gravity = Gravity.TOP | Gravity.START;
         parameters.x = 0;
         parameters.y = 0;
-        final ImageButton openButton = new ImageButton(this);
+        openButton = new ImageButton(this);
         openButton.setImageResource(R.mipmap.ic_keep);
         openButton.setBackgroundColor(Color.TRANSPARENT);
 
@@ -88,10 +106,66 @@ public class KeepBubbleService extends Service {
                 YoYo.with(Techniques.Pulse)
                         .duration(700)
                         .playOn(openButton);
-                Intent intent = new Intent();
-                intent.setComponent(new ComponentName("com.google.android.keep", "com.google.android.keep.activities.ShareReceiverActivity"));
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                try {
+                    Intent intent = new Intent();
+                    intent.setComponent(new ComponentName("com.google.android.keep", "com.google.android.keep.activities.ShareReceiverActivity"));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }catch (ActivityNotFoundException e){
+                    final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(KeepBubbleService.this, R.style.AppTheme_MaterialDialogTheme);
+
+                    dialogBuilder.setTitle("No google keep found");
+                    dialogBuilder.setMessage("Do you want to install it now?");
+                    dialogBuilder.setNegativeButton("No",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    YoYo.with(Techniques.ZoomOut)
+                                            .duration(700)
+                                            .playOn(openButton);
+                                    Handler h = new Handler();
+                                    h.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            wm.removeViewImmediate(ll);
+                                            stopService(new Intent(KeepBubbleService.this, KeepBubbleService.class));
+                                            KeepBubbleService.this.stopSelf();
+                                        }
+                                    }, 700);
+                                }
+                            }
+                    );
+
+                    dialogBuilder.setPositiveButton("Install it!",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    try {
+                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.keep")));
+                                    } catch (android.content.ActivityNotFoundException anfe) {
+                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.keep")));
+                                    }
+
+                                }
+                            });
+
+                    final AlertDialog dialog = dialogBuilder.create();
+                    final Window dialogWindow = dialog.getWindow();
+                    final WindowManager.LayoutParams dialogWindowAttributes = dialogWindow.getAttributes();
+
+                    // Set fixed width (280dp) and WRAP_CONTENT height
+                    final WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                    lp.copyFrom(dialogWindowAttributes);
+                    lp.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 280, getResources().getDisplayMetrics());
+                    lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                    dialogWindow.setAttributes(lp);
+
+                    // Set to TYPE_SYSTEM_ALERT so that the Service can display it
+                    dialogWindow.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+                    dialog.show();
+                }
 
             }
         });
@@ -194,5 +268,6 @@ public class KeepBubbleService extends Service {
         });
 
     }
+
 }
 

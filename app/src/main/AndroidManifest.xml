@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cf.VoxStudio.bubblekeep">
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".KeepBubbleService"/>
+
+        <service android:name=".KeepBubbleService" />
+
+        <activity
+            android:name=".MainIntroActivity"
+            android:theme="@style/Theme.Intro" />
+        <activity android:name=".PrefsActivityFragment"></activity>
     </application>
 
 </manifest>

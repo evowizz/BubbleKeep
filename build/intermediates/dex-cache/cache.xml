@@ -2,220 +2,193 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/transition/25.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-transition-25.0.1_ff94306f6c989437587fd14b089f1c073c361d22/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.1/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.1_c06184839a0bab1f3d25dc83e1011239f48748dc/classes.dex" />
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.0.1_c06184839a0bab1f3d25dc83e1011239f48748dc.jar" />
     </item>
     <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_4d37f9f531582bd1fb8a37602adf39a7a3476d34/classes.dex" />
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_4d37f9f531582bd1fb8a37602adf39a7a3476d34.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_079e05ee3955c54532314e7d107a5f09aa12ca7a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.1_fcc01bf4bc6407d174c73845ce985d11af072927/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/vojta/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/library-2.4.0_ff740c8aac2e800124a2f8bb17d97024b428419f/classes.dex" />
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/library-2.4.0_ff740c8aac2e800124a2f8bb17d97024b428419f.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.0.1/jars/classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
-        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.0.1_b2e335ca894db014ccd8ced9cb8e14fc4304fb9d/classes.dex" />
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.0.1_fcc01bf4bc6407d174c73845ce985d11af072927.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.1_4823bd5fdf9d48c7259666358f2ff2c728208ca5/classes.dex" />
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_079e05ee3955c54532314e7d107a5f09aa12ca7a.jar" />
     </item>
     <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.daimajia.androidanimations/library/1.1.3/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="8cec50fc9cc847bad0d6ed7d93814f4b34744521">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.daimajia.androidanimations-library-1.1.3_6bf9ee224c2cf7d19082254ef31a017052d96f75/classes.dex" />
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.daimajia.androidanimations-library-1.1.3_6bf9ee224c2cf7d19082254ef31a017052d96f75.jar" />
     </item>
     <item
-        is-multidex="true"
+        is-multidex="false"
+        jar="/home/vojta/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/support-annotations-25.0.1_4823bd5fdf9d48c7259666358f2ff2c728208ca5.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.0.1_66126be650c70d96e21e1cbe9a9493cbba6c6211/classes.dex" />
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.0.1_66126be650c70d96e21e1cbe9a9493cbba6c6211.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.0.1_9d38670489be34fbb953f579fc924655e1ff0e01/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.daimajia.easing/library/1.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.daimajia.easing-library-1.0.1_b4634f6ba8cd81608040c4817a9c94f809140af8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="219b4c4a98c2de044a1a1fc14875f4f5377c2188">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_4bceeb76288b7ce14599a58e747f1859fcb3aca5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.1/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.1_43e51d5c794a88c2b2b19c98519b9268453beb14/classes.dex" />
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.0.1_43e51d5c794a88c2b2b19c98519b9268453beb14.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.daimajia.easing/library/1.0.1/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
-        sha1="e968e5663133b65dbc92ee15cc84a81f6d8f0200">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2d9f57026395222b93bb8a9331e054f6eece1240/classes.dex" />
+        sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.daimajia.easing-library-1.0.1_b4634f6ba8cd81608040c4817a9c94f809140af8.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/libs/internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_68d551f3b507d6b49ff2bf81351005d6a480ec1c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.0.1_f93cdf6a2541a120a193cf48545cf2569ffd7096/classes.dex" />
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.0.1_f93cdf6a2541a120a193cf48545cf2569ffd7096.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
-        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.1_148540cd2c83dbf34d4e0a7d10aa3b7148526337/classes.dex" />
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_68d551f3b507d6b49ff2bf81351005d6a480ec1c.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/agency.tango.android/material-intro-screen/0.0.5/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="fb68af9d822e43b656b9dcba16277ffb8792043c">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/agency.tango.android-material-intro-screen-0.0.5_746441e35e19f95d7664de7a6303c667fa9e0a9c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.1_d72826ac6e63c411028cda5a30cf3ff7f44f474d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.1_564bd83a74aa9bcec09df588ac8da95851592fa3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/libs/internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_57a59f0f0f242865a3a10f45a7ca1db90ef7a1f6/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.1_3a4cfd0fd3df11c6b935078609c820ff9b9f6214/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_374b75fa55832492326ac2e4a70a89969d025896/classes.dex" />
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_374b75fa55832492326ac2e4a70a89969d025896.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.0.1_148540cd2c83dbf34d4e0a7d10aa3b7148526337.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.0.1_d72826ac6e63c411028cda5a30cf3ff7f44f474d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vojta/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-beta3/constraint-layout-solver-1.0.0-beta3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="22c1e9d26251df254de7cc9dee01f5f134b10eba">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.0-beta3_bf47ee8d36bf50e9181089c382979795491c15e5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support.constraint/constraint-layout/1.0.0-beta3/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b81d40d208a3308c8e81b2cccd3054238a13d140">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support.constraint-constraint-layout-1.0.0-beta3_fcd579112b50dbfcdf55fd9d7a7ab4606ad2c313.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.0.1_3a4cfd0fd3df11c6b935078609c820ff9b9f6214.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_57a59f0f0f242865a3a10f45a7ca1db90ef7a1f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.0.1_564bd83a74aa9bcec09df588ac8da95851592fa3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/exploded-aar/com.heinrichreimersoftware/material-intro/1.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="1951c72e3684358df816f19976ff92d5638afae3">
+        <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/pre-dexed/debug/com.heinrichreimersoftware-material-intro-1.6_98267d1f67d03dcfc06b240e81f5365dfc321706.jar" />
     </item>
 
 </items>

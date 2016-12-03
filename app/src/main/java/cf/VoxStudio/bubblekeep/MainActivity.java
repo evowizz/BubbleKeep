@@ -20,22 +20,101 @@ The main activity/screen
 package cf.VoxStudio.bubblekeep;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Handler;
+import android.os.Process;
+import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.TextView;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 
 public class MainActivity extends Activity {
 
-    Button b;
+    Switch mainSwitch;
+    TextView switchText;
+    String textOn = "On";
+    String textOff = "Off";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startService(new Intent(MainActivity.this,KeepBubbleService.class));
-        onBackPressed();
+        SharedPreferences sharedPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);
+        mainSwitch = (Switch) findViewById(R.id.main_switch);
+        switchText = (TextView) findViewById(R.id.switchText);
+
+        if (sharedPref.getBoolean("hasSeenIntro", false) || sharedPref.getBoolean("isRunning", false)){
+            startService(new Intent(MainActivity.this, KeepBubbleService.class));
+
+        } else {
+            Intent intent = new Intent(this, MainIntroActivity.class);
+            startActivity(intent);
+        }
+
+        if(sharedPref.getBoolean("isRunning", false)){
+            mainSwitch.setChecked(true);
+            switchText.setText(textOn);
+        }
+        else {
+            mainSwitch.setChecked(false);
+            switchText.setText(textOff);
+        }
+
+        mainSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    switchText.setText(textOn);
+                    startService(new Intent(MainActivity.this, KeepBubbleService.class));
+                } else {
+                    switchText.setText(textOff);
+                    YoYo.with(Techniques.ZoomOut)
+                            .duration(700)
+                            .playOn(KeepBubbleService.openButton);
+                    Handler h = new Handler();
+                    h.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            KeepBubbleService.wm.removeViewImmediate(KeepBubbleService.ll);
+                            try{
+                                stopService(new Intent(MainActivity.this, KeepBubbleService.class));
+                            }catch (IllegalArgumentException e) {
+                                startService(new Intent(MainActivity.this, KeepBubbleService.class));
+                                stopService(new Intent(MainActivity.this, KeepBubbleService.class));
+                            }
+                        }
+                    }, 700);
+                }
+            }
+        });
+
     }
+
+    public void switchSwitch(View view){
+        if(mainSwitch.isChecked()){
+            mainSwitch.setChecked(false);
+            switchText.setText(textOff);
+            try{
+                stopService(new Intent(MainActivity.this, KeepBubbleService.class));
+            }catch (IllegalArgumentException e){
+                startService(new Intent(MainActivity.this, KeepBubbleService.class));
+                stopService(new Intent(MainActivity.this, KeepBubbleService.class));
+            }
+        }else{
+            mainSwitch.setChecked(true);
+            switchText.setText(textOn);
+            startService(new Intent(MainActivity.this, KeepBubbleService.class));
+        }
+    }
+
 }

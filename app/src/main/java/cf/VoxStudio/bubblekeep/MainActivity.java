@@ -26,9 +26,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Process;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -50,19 +48,25 @@ public class MainActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);
+        SharedPreferences introPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);
         mainSwitch = (Switch) findViewById(R.id.main_switch);
         switchText = (TextView) findViewById(R.id.switchText);
 
-        if (sharedPref.getBoolean("hasSeenIntro", false) || sharedPref.getBoolean("isRunning", false)){
-            startService(new Intent(MainActivity.this, KeepBubbleService.class));
-
+        if (introPref.getBoolean("hasSeenIntro", false)){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if(Settings.canDrawOverlays(MainActivity.this)){
+                    startService(new Intent(MainActivity.this, KeepBubbleService.class));
+                }
+            }else {
+                startService(new Intent(MainActivity.this, KeepBubbleService.class));
+            }
         } else {
             Intent intent = new Intent(this, MainIntroActivity.class);
             startActivity(intent);
         }
 
-        if(sharedPref.getBoolean("isRunning", false)){
+        if(sharedPref.getBoolean("isRunning", true)){
             mainSwitch.setChecked(true);
             switchText.setText(textOn);
         }
@@ -73,28 +77,11 @@ public class MainActivity extends Activity {
 
         mainSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    switchText.setText(textOn);
-                    startService(new Intent(MainActivity.this, KeepBubbleService.class));
-                } else {
-                    switchText.setText(textOff);
-                    YoYo.with(Techniques.ZoomOut)
-                            .duration(700)
-                            .playOn(KeepBubbleService.openButton);
-                    Handler h = new Handler();
-                    h.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            KeepBubbleService.wm.removeViewImmediate(KeepBubbleService.ll);
-                            try{
-                                stopService(new Intent(MainActivity.this, KeepBubbleService.class));
-                            }catch (IllegalArgumentException e) {
-                                startService(new Intent(MainActivity.this, KeepBubbleService.class));
-                                stopService(new Intent(MainActivity.this, KeepBubbleService.class));
-                            }
-                        }
-                    }, 700);
-                }
+            if(isChecked){
+                handleSwitchOn();
+            }else {
+                handleSwitchOff();
+            }
             }
         });
 
@@ -103,18 +90,21 @@ public class MainActivity extends Activity {
     public void switchSwitch(View view){
         if(mainSwitch.isChecked()){
             mainSwitch.setChecked(false);
-            switchText.setText(textOff);
-            try{
-                stopService(new Intent(MainActivity.this, KeepBubbleService.class));
-            }catch (IllegalArgumentException e){
-                startService(new Intent(MainActivity.this, KeepBubbleService.class));
-                stopService(new Intent(MainActivity.this, KeepBubbleService.class));
-            }
-        }else{
+        } else {
             mainSwitch.setChecked(true);
-            switchText.setText(textOn);
-            startService(new Intent(MainActivity.this, KeepBubbleService.class));
         }
     }
 
-}
+    public void handleSwitchOff() {
+            switchText.setText(textOff);
+                    KeepBubbleService.wm.removeViewImmediate(KeepBubbleService.ll);
+                    stopService(new Intent(MainActivity.this, KeepBubbleService.class));
+                }
+    public void handleSwitchOn(){
+
+            switchText.setText(textOn);
+            startService(new Intent(MainActivity.this, KeepBubbleService.class));
+        }
+
+
+    }

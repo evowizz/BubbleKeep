@@ -23,7 +23,6 @@
         <activity
             android:name=".MainIntroActivity"
             android:theme="@style/Theme.Intro" />
-        <activity android:name=".PrefsActivityFragment"></activity>
     </application>
 
 </manifest>

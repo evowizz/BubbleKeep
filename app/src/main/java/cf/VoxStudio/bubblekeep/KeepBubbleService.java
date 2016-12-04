@@ -19,7 +19,6 @@ The bubble service
 
 package cf.VoxStudio.bubblekeep;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.ActivityNotFoundException;
@@ -31,31 +30,20 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.provider.Settings;
-import android.security.keystore.KeyPermanentlyInvalidatedException;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.MultiAutoCompleteTextView;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-
-import static android.content.ContentValues.TAG;
 
 public class KeepBubbleService extends Service {
 
@@ -143,9 +131,13 @@ public class KeepBubbleService extends Service {
                                 public void onClick(DialogInterface dialogInterface, int i) {
 
                                     try {
-                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.keep")));
-                                    } catch (android.content.ActivityNotFoundException anfe) {
-                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.keep")));
+                                        Intent playstore = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.keep"));
+                                        playstore.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(playstore);
+                                    } catch (ActivityNotFoundException e) {
+                                        Intent playstore = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.keep"));
+                                        playstore.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(playstore);
                                     }
 
                                 }

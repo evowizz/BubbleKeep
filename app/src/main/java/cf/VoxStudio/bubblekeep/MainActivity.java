@@ -19,14 +19,17 @@ The main activity/screen
 
 package cf.VoxStudio.bubblekeep;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -55,11 +58,11 @@ public class MainActivity extends Activity {
 
         if (introPref.getBoolean("hasSeenIntro", false)){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if(Settings.canDrawOverlays(MainActivity.this)){
+                if(ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.SYSTEM_ALERT_WINDOW)
+                        != PackageManager.PERMISSION_GRANTED){
                     startService(new Intent(MainActivity.this, KeepBubbleService.class));
                 }
-            }else {
-                startService(new Intent(MainActivity.this, KeepBubbleService.class));
             }
         } else {
             Intent intent = new Intent(this, MainIntroActivity.class);

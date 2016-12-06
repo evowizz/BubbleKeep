@@ -42,17 +42,32 @@ public class MainIntroActivity extends IntroActivity {
 
         SharedPreferences sharedPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean("hasSeenIntro", false);
+        editor.putBoolean("hasSeenIntro", true);
         editor.apply();
 
-        /**
-         * Standard slide (like Google's intros)
-         */
+        addSlide(new SimpleSlide.Builder()
+                .title("Welcome")
+                .description("This intro will guide you through this app")
+                .background(R.color.colorPrimary)
+                .backgroundDark(R.color.colorPrimaryDark)
+                .build());
+        addSlide(new SimpleSlide.Builder()
+                .title("Take notes everywhere")
+                .description("Doesn't matter if you are in Browser or on homescreen, you can take notes quickly")
+                .background(R.color.colorPrimary)
+                .backgroundDark(R.color.colorPrimaryDark)
+                .build());
 
+        addSlide(new SimpleSlide.Builder()
+                .title("Just a click")
+                .description("Click on your Keep Bubble to open note taking window")
+                .background(R.color.colorPrimary)
+                .backgroundDark(R.color.colorPrimaryDark)
+                .build());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             addSlide(new SimpleSlide.Builder()
-                    .title("We need to set permissions")
-                    .description("Due to changes in Android Marshmallow, we need the overlay permission")
+                    .title("Just one more thing")
+                    .description("Due to changes in Android Marshmallow, we need to set the overlay permission")
                     .image(R.drawable.ic_perm_overlay)
                     .background(R.color.colorPrimary)
                     .backgroundDark(R.color.colorPrimaryDark)
@@ -65,21 +80,16 @@ public class MainIntroActivity extends IntroActivity {
                     })
                     .build());
 
-        } else {
-            addSlide(new SimpleSlide.Builder()
-                    .title("You are all set!")
-                    .description("Please continue...")
-                    .image(R.drawable.ic_check)
-                    .background(R.color.colorPrimary)
-                    .backgroundDark(R.color.colorPrimaryDark)
-                    .build());
-
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             setNavigationPolicy(new NavigationPolicy() {
                 @Override
                 public boolean canGoForward(int position) {
-                    return Settings.canDrawOverlays(MainIntroActivity.this);
+                    switch (position){
+                        case 4:
+                            return Settings.canDrawOverlays(MainIntroActivity.this);
+                    }
+                    return true;
                 }
 
                 @Override

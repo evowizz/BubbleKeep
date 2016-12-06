@@ -40,6 +40,16 @@ public class MainActivity extends Activity {
     SharedPreferences.Editor editor;
     String textOn = "On";
     String textOff = "Off";
+    CompoundButton.OnCheckedChangeListener mainSwitchListener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            if (isChecked) {
+                handleSwitchOn();
+            } else {
+                handleSwitchOff();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +69,11 @@ public class MainActivity extends Activity {
         mainSwitch.setOnCheckedChangeListener(mainSwitchListener);
 
         //If user has seen intro
-        if(introPref.getBoolean("hasSeenIntro",false)){
+        if (introPref.getBoolean("hasSeenIntro", false)) {
             //looks like user has seen intro so we will check if it was on the last time
-            if (sharedPref.getBoolean("isOn", true)){
+            if (sharedPref.getBoolean("isOn", true)) {
                 //it was on, we will check if it is running
-                if(isServiceRunning(KeepBubbleService.class)){
+                if (isServiceRunning(KeepBubbleService.class)) {
                     //it is running we will check it, but without doing anything
                     mainSwitch.setOnClickListener(null);
                     mainSwitch.setChecked(true);
@@ -82,27 +92,26 @@ public class MainActivity extends Activity {
             }
         }
         //first checking for android version then if the permission is not granted
-        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //looks like user has android 6
-            if(!Settings.canDrawOverlays(MainActivity.this)){
+            if (!Settings.canDrawOverlays(MainActivity.this)) {
                 //the permission wasn't granted so we will open intro to ask the user for permission
                 Intent intent = new Intent(this, MainIntroActivity.class);
                 startActivity(intent);
             }
         }
         //if user haven't seen intro
-        else{
+        else {
             //user haven't seen intro, will we open intro
             Intent intent = new Intent(this, MainIntroActivity.class);
             startActivity(intent);
         }
 
 
-
     }
 
-    public void switchSwitch(View view){
-        if(mainSwitch.isChecked()){
+    public void switchSwitch(View view) {
+        if (mainSwitch.isChecked()) {
             mainSwitch.setChecked(false);
         } else {
             mainSwitch.setChecked(true);
@@ -117,11 +126,11 @@ public class MainActivity extends Activity {
         stopService(new Intent(MainActivity.this, KeepBubbleService.class));
     }
 
-    public void handleSwitchOn(){
-            editor.putBoolean("isOn", true);
-            editor.apply();
-            switchText.setText(textOn);
-            startService(new Intent(MainActivity.this, KeepBubbleService.class));
+    public void handleSwitchOn() {
+        editor.putBoolean("isOn", true);
+        editor.apply();
+        switchText.setText(textOn);
+        startService(new Intent(MainActivity.this, KeepBubbleService.class));
     }
 
     private boolean isServiceRunning(Class<?> serviceClass) {
@@ -134,15 +143,4 @@ public class MainActivity extends Activity {
         return false;
     }
 
-    CompoundButton.OnCheckedChangeListener mainSwitchListener = new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-            if(isChecked){
-                handleSwitchOn();
-            }else {
-                handleSwitchOff();
-            }
-        }
-    };
-
-    }
+}

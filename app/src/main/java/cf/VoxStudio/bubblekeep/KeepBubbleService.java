@@ -47,12 +47,13 @@ import com.daimajia.androidanimations.library.YoYo;
 
 public class KeepBubbleService extends Service {
 
+    public final static String Keep = "com.google.android.keep";
+    public final static String Activity = Keep + ".activities.ShareReceiverActivity";
     static WindowManager wm;
     static LinearLayout ll;
-    boolean isMoving;
     static ImageButton openButton;
+    boolean isMoving;
     SharedPreferences.Editor editor;
-
 
 
     @Override
@@ -96,10 +97,10 @@ public class KeepBubbleService extends Service {
                         .playOn(openButton);
                 try {
                     Intent intent = new Intent();
-                    intent.setComponent(new ComponentName("com.google.android.keep", "com.google.android.keep.activities.ShareReceiverActivity"));
+                    intent.setClassName(Keep, Activity);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-                }catch (ActivityNotFoundException e){
+                } catch (ActivityNotFoundException e) {
                     final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(KeepBubbleService.this, R.style.AppTheme_MaterialDialogTheme);
 
                     dialogBuilder.setTitle("No google keep found");
@@ -240,7 +241,7 @@ public class KeepBubbleService extends Service {
 
     }
 
-    public void exit(){
+    public void exit() {
         YoYo.with(Techniques.ZoomOut)
                 .duration(700)
                 .playOn(openButton);

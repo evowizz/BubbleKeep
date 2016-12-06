@@ -65,7 +65,7 @@ public class MainIntroActivity extends IntroActivity {
                     })
                     .build());
 
-        }else {
+        } else {
             addSlide(new SimpleSlide.Builder()
                     .title("You are all set!")
                     .description("Please continue...")
@@ -89,6 +89,7 @@ public class MainIntroActivity extends IntroActivity {
             });
         }
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         return (keyCode == KeyEvent.KEYCODE_BACK) || super.onKeyDown(keyCode, event);

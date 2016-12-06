@@ -12,11 +12,18 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:theme="@style/AppTheme"
-        android:paddingStart="16dp">
+        android:paddingStart="16dp"
+        android:elevation="4dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/switchLayout"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
@@ -27,6 +34,8 @@
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:textColor="@color/white"
             android:id="@+id/toolbar_title" />
+
+
 
 
     </android.support.v7.widget.Toolbar>
@@ -46,7 +55,8 @@
         tools:layout_constraintRight_creator="1"
         tools:layout="@android:layout/list_content"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintTop_creator="1" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/switchLayout"
@@ -59,7 +69,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1">
 
         <TextView
             android:id="@+id/switchText"
@@ -81,7 +93,9 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/Switch"/>
     </android.support.constraint.ConstraintLayout>
+
 
 </android.support.constraint.ConstraintLayout>

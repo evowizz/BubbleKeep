@@ -22,7 +22,6 @@ package cf.VoxStudio.bubblekeep;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -81,7 +80,7 @@ public class KeepBubbleService extends Service {
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
-        parameters.gravity = Gravity.TOP | Gravity.START;
+        parameters.gravity = Gravity.CENTER;
         parameters.x = 0;
         parameters.y = 0;
         openButton = new ImageButton(this);
@@ -103,7 +102,7 @@ public class KeepBubbleService extends Service {
                 } catch (ActivityNotFoundException e) {
                     final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(KeepBubbleService.this, R.style.AppTheme_MaterialDialogTheme);
 
-                    dialogBuilder.setTitle("No google keep found");
+                    dialogBuilder.setTitle("Google Keep not found");
                     dialogBuilder.setMessage("Do you want to install it now?");
                     dialogBuilder.setNegativeButton("No",
                             new DialogInterface.OnClickListener() {
@@ -155,6 +154,8 @@ public class KeepBubbleService extends Service {
         openButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+
+
                 final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(KeepBubbleService.this, R.style.AppTheme_MaterialDialogTheme);
 
                 dialogBuilder.setTitle("Exit?");
@@ -234,12 +235,12 @@ public class KeepBubbleService extends Service {
                         isMoving = false;
                         break;
                 }
-
                 return false;
             }
         });
 
     }
+
 
     public void exit() {
         YoYo.with(Techniques.ZoomOut)

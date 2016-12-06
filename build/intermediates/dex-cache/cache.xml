@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="529a00915077ceecaeb45b1ad15ef3f6e27c6e4e">
+        sha1="5dc8b6f0dac85585cc6a6f5d64a638eb5a5efc9b">
         <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_4bceeb76288b7ce14599a58e747f1859fcb3aca5/classes.dex" />
     </item>
     <item
@@ -106,7 +106,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="685ecf7b6a333576f2c51d3bed92d531e777ac64">
+        sha1="3363e86abe88e27083ddfb32f9f07e1789b5f5a2">
         <dex dex="/home/vojta/Android/Projekty/BubbleKeep/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2d9f57026395222b93bb8a9331e054f6eece1240/classes.dex" />
     </item>
     <item

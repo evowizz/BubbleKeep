@@ -35,7 +35,7 @@
         android:elevation="6dp">
 
         <TextView
-            android:text="How could you even read this?!"
+            android:text="Off"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"

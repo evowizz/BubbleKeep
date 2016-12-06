@@ -51,6 +51,7 @@ public class KeepBubbleService extends Service {
     static LinearLayout ll;
     boolean isMoving;
     static ImageButton openButton;
+    SharedPreferences.Editor editor;
 
 
 
@@ -63,9 +64,8 @@ public class KeepBubbleService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        SharedPreferences sharedPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean("isRunning", true);
+        SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
         editor.apply();
 
         wm = (WindowManager) getSystemService(WINDOW_SERVICE);
@@ -108,19 +108,7 @@ public class KeepBubbleService extends Service {
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                    YoYo.with(Techniques.ZoomOut)
-                                            .duration(700)
-                                            .playOn(openButton);
-                                    Handler h = new Handler();
-                                    h.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            wm.removeViewImmediate(ll);
-                                            stopService(new Intent(KeepBubbleService.this, KeepBubbleService.class));
-                                            KeepBubbleService.this.stopSelf();
-                                        }
-                                    }, 700);
+                                    exit();
                                 }
                             }
                     );
@@ -182,18 +170,7 @@ public class KeepBubbleService extends Service {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                YoYo.with(Techniques.ZoomOut)
-                                        .duration(700)
-                                        .playOn(openButton);
-                                Handler h = new Handler();
-                                h.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        wm.removeViewImmediate(ll);
-                                        stopService(new Intent(KeepBubbleService.this, KeepBubbleService.class));
-                                        KeepBubbleService.this.stopSelf();
-                                    }
-                                }, 700);
+                                exit();
                             }
                         });
 
@@ -259,6 +236,24 @@ public class KeepBubbleService extends Service {
             }
         });
 
+    }
+
+    public void exit(){
+        YoYo.with(Techniques.ZoomOut)
+                .duration(700)
+                .playOn(openButton);
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                wm.removeViewImmediate(ll);
+                stopService(new Intent(KeepBubbleService.this, KeepBubbleService.class));
+                KeepBubbleService.this.stopSelf();
+            }
+        }, 700);
+
+        editor.putBoolean("isOn", false);
+        editor.apply();
     }
 
 }

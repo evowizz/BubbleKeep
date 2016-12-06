@@ -22,6 +22,7 @@ package cf.VoxStudio.bubblekeep;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -41,7 +42,7 @@ public class MainIntroActivity extends IntroActivity {
 
         SharedPreferences sharedPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean("hasSeenIntro", true);
+        editor.putBoolean("hasSeenIntro", false);
         editor.apply();
 
         /**
@@ -51,7 +52,7 @@ public class MainIntroActivity extends IntroActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             addSlide(new SimpleSlide.Builder()
                     .title("We need to set permissions")
-                    .description("Duo to changes in android marshmallow we need the overlay permmision")
+                    .description("Due to changes in Android Marshmallow, we need the overlay permission")
                     .image(R.drawable.ic_perm_overlay)
                     .background(R.color.colorPrimary)
                     .backgroundDark(R.color.colorPrimaryDark)
@@ -59,16 +60,15 @@ public class MainIntroActivity extends IntroActivity {
                     .buttonCtaClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent i = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-                            startActivity(i);
+                            startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:cf.VoxStudio.bubblekeep")));
                         }
                     })
                     .build());
 
         }else {
             addSlide(new SimpleSlide.Builder()
-                    .title("You are all set")
-                    .description("Please continue")
+                    .title("You are all set!")
+                    .description("Please continue...")
                     .image(R.drawable.ic_check)
                     .background(R.color.colorPrimary)
                     .backgroundDark(R.color.colorPrimaryDark)

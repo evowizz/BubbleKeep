@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "25.0.1"
     defaultConfig {
         applicationId "cf.VoxStudio.bubblekeep"
         minSdkVersion 19
@@ -31,5 +31,5 @@ dependencies {
     compile 'com.heinrichreimersoftware:material-intro:1.6'
     compile 'com.android.support:support-v4:25.0.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 }

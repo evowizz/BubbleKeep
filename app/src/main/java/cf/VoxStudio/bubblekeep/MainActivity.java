@@ -68,7 +68,6 @@ public class MainActivity extends Activity {
                     mainSwitch.setOnClickListener(null);
                     mainSwitch.setChecked(true);
                     mainSwitch.setOnCheckedChangeListener(mainSwitchListener);
-                    Toast.makeText(MainActivity.this,"s", Toast.LENGTH_LONG).show();
                 } else {
                     //it was only on, but killed or ended, so we will set the switch on and launch the service
                     mainSwitch.setChecked(false);

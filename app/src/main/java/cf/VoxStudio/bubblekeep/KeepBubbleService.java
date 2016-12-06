@@ -133,6 +133,7 @@ public class KeepBubbleService extends Service {
 
                     final AlertDialog dialog = dialogBuilder.create();
                     final Window dialogWindow = dialog.getWindow();
+                    assert dialogWindow != null;
                     final WindowManager.LayoutParams dialogWindowAttributes = dialogWindow.getAttributes();
 
                     // Set fixed width (280dp) and WRAP_CONTENT height
@@ -176,6 +177,7 @@ public class KeepBubbleService extends Service {
 
                 final AlertDialog dialog = dialogBuilder.create();
                 final Window dialogWindow = dialog.getWindow();
+                assert dialogWindow != null;
                 final WindowManager.LayoutParams dialogWindowAttributes = dialogWindow.getAttributes();
 
                 // Set fixed width (280dp) and WRAP_CONTENT height

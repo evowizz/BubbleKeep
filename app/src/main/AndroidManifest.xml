@@ -34,18 +34,6 @@
             </intent-filter>
         </service>
 
-        <service android:name=".FirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"></action>
-            </intent-filter>
-        </service>
-
-        <service android:name=".FirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
-            </intent-filter>
-        </service>
-
     </application>
 
 </manifest>

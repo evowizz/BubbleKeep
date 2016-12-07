@@ -23,17 +23,10 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -46,31 +39,17 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     String textOn = "On";
     String textOff = "Off";
-    boolean darkTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //setting the theme
-        if (PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("darkTheme", true)){
-            setTheme(R.style.DarkAppTheme);
-        }else {
-            setTheme(R.style.AppTheme);
-        }
         setContentView(R.layout.activity_main);
-        //setting toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
 
         //Adding shared preferences
         SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);  //Main ones  -  used by every activity
         SharedPreferences introPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);  //Intro preferences  -  used only to check if user has seen intro
-        SharedPreferences fragmentPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());  //Shared preferences from setting fragment
-        editor = sharedPref.edit();  //shared preferences editor
+            editor = sharedPref.edit();  //shared preferences editor
         //assigning variables
         mainSwitch = (Switch) findViewById(R.id.main_switch);
         switchText = (TextView) findViewById(R.id.switchText);

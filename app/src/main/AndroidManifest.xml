@@ -25,7 +25,7 @@
             android:name=".MainIntroActivity"
             android:exported="false"
             android:theme="@style/Theme.Intro" />
-        <activity android:name=".PrefsActivity"></activity>
+        <fragment android:name=".PrefsActivity"></fragment>
 
         <service
             android:name=".BubbleKeepTileService"
@@ -47,7 +47,7 @@
         </service>
 
         <service
-            android:name=".MessagingService"
+            android:name=".NotificationService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"></action>

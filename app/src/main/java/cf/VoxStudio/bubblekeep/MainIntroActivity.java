@@ -85,7 +85,7 @@ public class MainIntroActivity extends IntroActivity {
             setNavigationPolicy(new NavigationPolicy() {
                 @Override
                 public boolean canGoForward(int position) {
-                    switch (position){
+                    switch (position) {
                         case 4:
                             return Settings.canDrawOverlays(MainIntroActivity.this);
                     }

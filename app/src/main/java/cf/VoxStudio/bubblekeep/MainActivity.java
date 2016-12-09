@@ -26,7 +26,9 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -39,17 +41,30 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     String textOn = "On";
     String textOff = "Off";
+    CompoundButton.OnCheckedChangeListener mainSwitchListener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            if (isChecked) {
+                handleSwitchOn();
+            } else {
+                handleSwitchOff();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setTitle(Html.fromHtml("<font color='#ffffff' style='bold'>" + getString(R.string.app_name) + "</font>"));
+
 
         //Adding shared preferences
         SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);  //Main ones  -  used by every activity
         SharedPreferences introPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);  //Intro preferences  -  used only to check if user has seen intro
-            editor = sharedPref.edit();  //shared preferences editor
+        editor = sharedPref.edit();  //shared preferences editor
         //assigning variables
         mainSwitch = (Switch) findViewById(R.id.main_switch);
         switchText = (TextView) findViewById(R.id.switchText);
@@ -61,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
         //If user has seen intro
         if (introPref.getBoolean("hasSeenIntro", true)) {
             //looks like user has seen intro so we will check if it was on the last time
-            if (sharedPref.getBoolean("isOn", true)){
+            if (sharedPref.getBoolean("isOn", true)) {
                 //it was on, we will check if it is running
-                if(isServiceRunning(KeepBubbleService.class)){
+                if (isServiceRunning(KeepBubbleService.class)) {
                     //it is running we will check it, but without doing anything
                     mainSwitch.setOnClickListener(null);
                     mainSwitch.setChecked(true);
@@ -82,27 +97,26 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         //first checking for android version then if the permission is not granted
-        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //looks like user has android 6
-            if(!Settings.canDrawOverlays(MainActivity.this)){
+            if (!Settings.canDrawOverlays(MainActivity.this)) {
                 //the permission wasn't granted so we will open intro to ask the user for permission
                 Intent intent = new Intent(this, MainIntroActivity.class);
                 startActivity(intent);
             }
         }
         //if user haven't seen intro
-        else{
+        else {
             //user haven't seen intro, will we open intro
             Intent intent = new Intent(this, MainIntroActivity.class);
             startActivity(intent);
         }
 
 
-
     }
 
-    public void switchSwitch(View view){
-        if(mainSwitch.isChecked()){
+    public void switchSwitch(View view) {
+        if (mainSwitch.isChecked()) {
             mainSwitch.setChecked(false);
         } else {
             mainSwitch.setChecked(true);
@@ -117,11 +131,11 @@ public class MainActivity extends AppCompatActivity {
         stopService(new Intent(MainActivity.this, KeepBubbleService.class));
     }
 
-    public void handleSwitchOn(){
-            editor.putBoolean("isOn", true);
-            editor.apply();
-            switchText.setText(textOn);
-            startService(new Intent(MainActivity.this, KeepBubbleService.class));
+    public void handleSwitchOn() {
+        editor.putBoolean("isOn", true);
+        editor.apply();
+        switchText.setText(textOn);
+        startService(new Intent(MainActivity.this, KeepBubbleService.class));
     }
 
     private boolean isServiceRunning(Class<?> serviceClass) {
@@ -134,15 +148,4 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    CompoundButton.OnCheckedChangeListener mainSwitchListener = new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-            if(isChecked){
-                handleSwitchOn();
-            }else {
-                handleSwitchOff();
-            }
-        }
-    };
-
-    }
+}

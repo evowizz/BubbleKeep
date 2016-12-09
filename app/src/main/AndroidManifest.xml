@@ -13,27 +13,46 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <service android:name=".KeepBubbleService" />
+        <service
+            android:name=".KeepBubbleService"
+            android:exported="false"/>
 
         <activity
             android:name=".MainIntroActivity"
+            android:exported="false"
             android:theme="@style/Theme.Intro" />
+        <activity android:name=".PrefsActivity"></activity>
 
         <service
             android:name=".BubbleKeepTileService"
             android:icon="@drawable/ic_lightbulb"
             android:label="@string/tile_name"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
 
+        <service
+            android:name=".FirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"></action>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

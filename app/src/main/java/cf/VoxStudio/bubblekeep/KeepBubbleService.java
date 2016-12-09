@@ -80,9 +80,9 @@ public class KeepBubbleService extends Service {
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
-        parameters.gravity = Gravity.CENTER;
-        parameters.x = 0;
-        parameters.y = 0;
+        parameters.gravity = Gravity.START;
+        parameters.x = 640;
+        parameters.y = -10;
         openButton = new ImageButton(this);
         openButton.setImageResource(R.mipmap.ic_keep);
         openButton.setBackgroundColor(Color.TRANSPARENT);
@@ -238,7 +238,6 @@ public class KeepBubbleService extends Service {
                 return false;
             }
         });
-
     }
 
 

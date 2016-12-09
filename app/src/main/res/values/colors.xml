@@ -3,6 +3,7 @@
     <color name="colorPrimary">#ffbb00</color>
     <color name="colorPrimaryDark">#f99f00</color>
     <color name="colorAccent">#ffbb00</color>
+    <color name="notification_color">#f3b819</color>
     <color name="white">#ffffff</color>
 
     <!-- AboutLibraries DEFAULT colors -->

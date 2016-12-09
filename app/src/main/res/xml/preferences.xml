@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Settings">
+
+        <!-- TODO: Add an option to change the bubble icon -->
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/listArray"
+            android:entryValues="@array/listValues"
+            android:key="futureoption"
+            android:summary="Future option's detail"
+            android:title="Future Option" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

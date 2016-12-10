@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActionBar actionbar = getSupportActionBar();
+        assert actionbar != null;
         actionbar.setTitle(Html.fromHtml("<font color='#ffffff' style='bold'>" + getString(R.string.app_name) + "</font>"));
 
 

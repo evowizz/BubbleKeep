@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="listArray">
-        <item>Item 1</item>
-        <item>Item 2</item>
-        <item>Item 3</item>
+        <item>Oh this is a cool icon!</item>
+        <item>An even cooler one!!</item>
+        <item>Boring one...</item>
     </string-array>
 
     <string-array name="listValues">

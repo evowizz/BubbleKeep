@@ -28,9 +28,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -50,9 +52,11 @@ public class KeepBubbleService extends Service {
     public final static String Activity = Keep + ".activities.ShareReceiverActivity";
     static WindowManager wm;
     static LinearLayout ll;
+    static WindowManager.LayoutParams parameters;
     static ImageButton openButton;
     boolean isMoving;
     SharedPreferences.Editor editor;
+    SharedPreferences prefsFragment;
 
 
     @Override
@@ -65,6 +69,7 @@ public class KeepBubbleService extends Service {
         super.onCreate();
 
         SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);
+        prefsFragment = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPref.edit();
         editor.apply();
 
@@ -76,7 +81,7 @@ public class KeepBubbleService extends Service {
         ll.setLayoutParams(layoutParameteres);
 
 
-        final WindowManager.LayoutParams parameters = new WindowManager.LayoutParams(
+        parameters = new WindowManager.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
@@ -84,7 +89,7 @@ public class KeepBubbleService extends Service {
         parameters.x = 640;
         parameters.y = -10;
         openButton = new ImageButton(this);
-        openButton.setImageResource(R.mipmap.ic_keep);
+        openButton.setImageDrawable(getImage());
         openButton.setBackgroundColor(Color.TRANSPARENT);
 
         openButton.setOnClickListener(new View.OnClickListener() {
@@ -257,6 +262,19 @@ public class KeepBubbleService extends Service {
 
         editor.putBoolean("isOn", false);
         editor.apply();
+    }
+
+    public Drawable getImage(){
+        Drawable image = getResources().getDrawable(R.mipmap.ic_keep); //setting default fot android studio not not to give me na error
+
+        if (prefsFragment.getString("futureoption","").matches("1")){
+            image = getResources().getDrawable(R.mipmap.ic_keep);
+        } else if (prefsFragment.getString("futureoption","").matches("2")){
+            image = getResources().getDrawable(R.drawable.ic_lightbulb);
+        } else if (prefsFragment.getString("futureoption","").matches("3")){
+            image = getResources().getDrawable(R.mipmap.ic_launcher);
+        }
+        return image;
     }
 
 }

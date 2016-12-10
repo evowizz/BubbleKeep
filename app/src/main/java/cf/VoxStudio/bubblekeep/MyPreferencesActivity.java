@@ -16,28 +16,83 @@ The preferences fragment
 
 package cf.VoxStudio.bubblekeep;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.widget.Toast;
 
-public class MyPreferencesActivity extends PreferenceActivity {
+public class MyPreferencesActivity extends PreferenceActivity  {
+
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
+        SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);
+
+
+
+
+        editor = sharedPref.edit();
+        editor.apply();
+
+
     }
 
-    public static class MyPreferenceFragment extends PreferenceFragment
+
+    public static class MyPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
     {
         @Override
         public void onCreate(final Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
+
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            // Set up a listener whenever a key changes
+            getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        }
+
+        @Override
+        public void onPause() {
+            super.onPause();
+            // Set up a listener whenever a key changes
+            getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        }
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            ListPreference lp = (ListPreference) findPreference("futureoption");
+
+            if (key.matches("futureoption")) {
+                Drawable image = getResources().getDrawable(R.mipmap.ic_keep); //setting default fot android studio not not to give me na error
+
+                if (lp.getValue().matches("1")){
+                    image = getResources().getDrawable(R.mipmap.ic_keep);
+                } else if (lp.getValue().matches("2")){
+                    image = getResources().getDrawable(R.drawable.ic_lightbulb);
+                } else if (lp.getValue().matches("3")){
+                    image = getResources().getDrawable(R.mipmap.ic_launcher);
+                }
+                KeepBubbleService.wm.removeViewImmediate(KeepBubbleService.ll);
+                KeepBubbleService.openButton.setImageDrawable(image);
+                KeepBubbleService.wm.addView(KeepBubbleService.ll, KeepBubbleService.parameters);
+
+            }
         }
     }
 
+
+
+
+
 }
-
-

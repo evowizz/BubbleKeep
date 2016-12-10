@@ -7,9 +7,9 @@
             android:defaultValue="1"
             android:entries="@array/listArray"
             android:entryValues="@array/listValues"
-            android:key="futureoption"
-            android:summary="Future option's detail"
-            android:title="Future Option" />
+            android:key="bubblechanger"
+            android:summary="This option allows you to change the Bubble style"
+            android:title="Bubble style" />
 
     </PreferenceCategory>
 </PreferenceScreen>

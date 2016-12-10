@@ -97,7 +97,7 @@ public class KeepBubbleService extends Service {
             public void onClick(View view) {
 
                 YoYo.with(Techniques.Pulse)
-                        .duration(700)
+                        .duration(1000)
                         .playOn(openButton);
                 try {
                     Intent intent = new Intent();
@@ -265,17 +265,16 @@ public class KeepBubbleService extends Service {
     }
 
     public Drawable getImage(){
-        Drawable image = getResources().getDrawable(R.mipmap.ic_keep); //setting default fot android studio not not to give me na error
+        Drawable image = getResources().getDrawable(R.mipmap.ic_bubble1); //setting default fot android studio not not to give me na error
 
-        if (prefsFragment.getString("futureoption","").matches("1")){
-            image = getResources().getDrawable(R.mipmap.ic_keep);
+        if (prefsFragment.getString("bubblechanger","").matches("1")){
+            image = getResources().getDrawable(R.mipmap.ic_bubble1);
         } else if (prefsFragment.getString("futureoption","").matches("2")){
-            image = getResources().getDrawable(R.drawable.ic_lightbulb);
+            image = getResources().getDrawable(R.mipmap.ic_bubble2);
         } else if (prefsFragment.getString("futureoption","").matches("3")){
-            image = getResources().getDrawable(R.mipmap.ic_launcher);
+            image = getResources().getDrawable(R.mipmap.ic_bubble3);
         }
         return image;
     }
 
 }
-

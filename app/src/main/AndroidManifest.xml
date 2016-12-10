@@ -18,8 +18,7 @@
         </activity>
 
         <service
-            android:name=".KeepBubbleService"
-            android:exported="false"/>
+            android:name=".KeepBubbleService" />
 
         <activity
             android:name=".MainIntroActivity"
@@ -31,8 +30,7 @@
             android:name=".BubbleKeepTileService"
             android:icon="@drawable/ic_lightbulb"
             android:label="@string/tile_name"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-            android:exported="true">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>

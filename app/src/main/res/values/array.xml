@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="listArray">
-        <item>Oh this is a cool icon!</item>
-        <item>An even cooler one!!</item>
-        <item>Boring one...</item>
+        <item>Original</item>
+        <item>Black (Good for Amoled)</item>
+        <item>Keep</item>
     </string-array>
 
     <string-array name="listValues">

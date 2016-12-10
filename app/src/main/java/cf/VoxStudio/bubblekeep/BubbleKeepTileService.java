@@ -3,7 +3,6 @@ package cf.VoxStudio.bubblekeep;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
-import android.os.IBinder;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
@@ -14,10 +13,6 @@ public class BubbleKeepTileService extends TileService {
     public final static String Keep = "com.google.android.keep";
     public final static String Activity = Keep + ".activities.ShareReceiverActivity";
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
 
     @Override
     public void onClick() {

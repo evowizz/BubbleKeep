@@ -23,8 +23,6 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
 
 public class MyPreferencesActivity extends PreferenceActivity  {
 
@@ -71,17 +69,17 @@ public class MyPreferencesActivity extends PreferenceActivity  {
         }
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            ListPreference lp = (ListPreference) findPreference("futureoption");
+            ListPreference lp = (ListPreference) findPreference("bubblechanger");
 
-            if (key.matches("futureoption")) {
-                Drawable image = getResources().getDrawable(R.mipmap.ic_keep); //setting default fot android studio not not to give me na error
+            if (key.matches("bubblechanger")) {
+                Drawable image = getResources().getDrawable(R.mipmap.ic_bubble1); //setting default fot android studio not not to give me na error
 
                 if (lp.getValue().matches("1")){
-                    image = getResources().getDrawable(R.mipmap.ic_keep);
+                    image = getResources().getDrawable(R.mipmap.ic_bubble1);
                 } else if (lp.getValue().matches("2")){
-                    image = getResources().getDrawable(R.drawable.ic_lightbulb);
+                    image = getResources().getDrawable(R.mipmap.ic_bubble2);
                 } else if (lp.getValue().matches("3")){
-                    image = getResources().getDrawable(R.mipmap.ic_launcher);
+                    image = getResources().getDrawable(R.mipmap.ic_bubble3);
                 }
                 KeepBubbleService.wm.removeViewImmediate(KeepBubbleService.ll);
                 KeepBubbleService.openButton.setImageDrawable(image);

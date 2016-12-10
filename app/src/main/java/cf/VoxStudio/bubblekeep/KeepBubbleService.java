@@ -46,6 +46,8 @@ import android.widget.LinearLayout;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+//TODO: Try changing the way the to "exit" the bubble
+
 public class KeepBubbleService extends Service {
 
     public final static String Keep = "com.google.android.keep";
@@ -248,7 +250,7 @@ public class KeepBubbleService extends Service {
 
     public void exit() {
         YoYo.with(Techniques.ZoomOut)
-                .duration(700)
+                .duration(1000)
                 .playOn(openButton);
         Handler h = new Handler();
         h.postDelayed(new Runnable() {

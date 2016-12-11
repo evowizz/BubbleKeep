@@ -20,6 +20,10 @@ public class NotificationService extends com.google.firebase.messaging.FirebaseM
         String url = remoteMessage.getData().get("url");
         Uri webpage = Uri.parse(url);
 
+        if (remoteMessage.getData().size()>0) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);

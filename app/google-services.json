@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "675912676060",
+    "firebase_url": "https://bubble-keep.firebaseio.com",
+    "project_id": "bubble-keep",
+    "storage_bucket": "bubble-keep.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675912676060:android:cced00692540568f",
+        "android_client_info": {
+          "package_name": "cf.VoxStudio.bubblekeep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675912676060-t9kk94811ojtp2h2ef5j8grh8rgusl8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3RSu40SIQ9PpMpGGeoPwiJxv5Mw2PIdA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

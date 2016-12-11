@@ -4,6 +4,8 @@
 # User-specific properties (keys, etc.)
 gradle.properties
 signing.properties
+google-services.json
+FirebaseInstanceIDService.java
 
 # Built application files
 *.apk

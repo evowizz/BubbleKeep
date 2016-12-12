@@ -33,6 +33,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -112,11 +113,11 @@ public class KeepBubbleService extends Service {
         Params.y = 100;
 
         mWindowManager.addView(openImage, Params);
-        addCrumpledPaperOnTouchListener();
+        addOnTouchListener();
         addOpenListener();
     }
 
-    private void addCrumpledPaperOnTouchListener() {
+    private void addOnTouchListener() {
         openImage.setOnTouchListener(new View.OnTouchListener() {
             private int initialX;
             private int initialY;
@@ -210,14 +211,14 @@ public class KeepBubbleService extends Service {
     }
 
     public Drawable getImage(){
-        Drawable image = getResources().getDrawable(R.mipmap.ic_bubble1); //setting default fot android studio not not to give me na error
+        Drawable image = ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_bubble1); //setting default fot android studio not not to give me na error
 
         if (prefsFragment.getString("bubblechanger","").matches("1")){
-            image = getResources().getDrawable(R.mipmap.ic_bubble1);
+            image = ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_bubble1);
         } else if (prefsFragment.getString("bubblechanger","").matches("2")){
-            image = getResources().getDrawable(R.mipmap.ic_bubble2);
+            image = ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_bubble2);
         } else if (prefsFragment.getString("bubblechanger","").matches("3")){
-            image = getResources().getDrawable(R.mipmap.ic_bubble3);
+            image = ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_bubble3);
         }
         return image;
     }

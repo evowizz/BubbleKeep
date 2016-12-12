@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         assert actionbar != null;
         actionbar.setTitle(Html.fromHtml("<font color='#ffffff' style='bold'>" + getString(R.string.app_name) + "</font>"));
 
-
         //Adding shared preferences
         SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);  //Main ones  -  used by every activity
         SharedPreferences introPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);  //Intro preferences  -  used only to check if user has seen intro

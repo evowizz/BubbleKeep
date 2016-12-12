@@ -16,16 +16,16 @@ The preferences fragment
 
 package cf.VoxStudio.bubblekeep;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
 public class MyPreferencesActivity extends PreferenceActivity  {
-
 
 
     @Override
@@ -62,12 +62,24 @@ public class MyPreferencesActivity extends PreferenceActivity  {
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             ListPreference lp = (ListPreference) findPreference("bubblechanger");
 
-            if (key.matches("bubblechanger")) {
+            if (key.matches("bubblechanger") && isServiceRunning(KeepBubbleService.class, getActivity())) {
                 getActivity().stopService(new Intent(getActivity(), KeepBubbleService.class));
                 getActivity().startService(new Intent(getActivity(), KeepBubbleService.class));
             }
         }
+
+        private boolean isServiceRunning(Class<?> serviceClass, Context c) {
+            ActivityManager manager = (ActivityManager) c.getSystemService(Context.ACTIVITY_SERVICE);
+            for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+                if (serviceClass.getName().equals(service.service.getClassName())) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
+
+
 
 
 

@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         mainSwitch.setOnCheckedChangeListener(mainSwitchListener);
 
         //If user has seen intro
-        if (introPref.getBoolean("hasSeenIntro", true)) {
+        if (introPref.getBoolean("hasSeenIntro", false)) {
             //looks like user has seen intro so we will check if it was on the last time
             if (sharedPref.getBoolean("isOn", true)) {
                 //it was on, we will check if it is running
@@ -128,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("isOn", false);
         editor.apply();
         switchText.setText(textOff);
-        KeepBubbleService.wm.removeViewImmediate(KeepBubbleService.ll);
         stopService(new Intent(MainActivity.this, KeepBubbleService.class));
     }
 

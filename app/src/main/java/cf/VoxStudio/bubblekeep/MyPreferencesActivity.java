@@ -16,7 +16,7 @@ The preferences fragment
 
 package cf.VoxStudio.bubblekeep;
 
-import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,21 +26,12 @@ import android.preference.PreferenceFragment;
 
 public class MyPreferencesActivity extends PreferenceActivity  {
 
-    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
-        SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);
-
-
-
-
-        editor = sharedPref.edit();
-        editor.apply();
-
-
     }
 
 
@@ -72,19 +63,8 @@ public class MyPreferencesActivity extends PreferenceActivity  {
             ListPreference lp = (ListPreference) findPreference("bubblechanger");
 
             if (key.matches("bubblechanger")) {
-                Drawable image = getResources().getDrawable(R.mipmap.ic_bubble1); //setting default fot android studio not not to give me na error
-
-                if (lp.getValue().matches("1")){
-                    image = getResources().getDrawable(R.mipmap.ic_bubble1);
-                } else if (lp.getValue().matches("2")){
-                    image = getResources().getDrawable(R.mipmap.ic_bubble2);
-                } else if (lp.getValue().matches("3")){
-                    image = getResources().getDrawable(R.mipmap.ic_bubble3);
-                }
-                KeepBubbleService.wm.removeViewImmediate(KeepBubbleService.ll);
-                KeepBubbleService.openButton.setImageDrawable(image);
-                KeepBubbleService.wm.addView(KeepBubbleService.ll, KeepBubbleService.parameters);
-
+                getActivity().stopService(new Intent(getActivity(), KeepBubbleService.class));
+                getActivity().startService(new Intent(getActivity(), KeepBubbleService.class));
             }
         }
     }

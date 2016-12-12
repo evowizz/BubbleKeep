@@ -26,86 +26,213 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-//TODO: Try changing the way the to "exit" the bubble
-
 public class KeepBubbleService extends Service {
 
+    //keep stuff
     public final static String Keep = "com.google.android.keep";
     public final static String Activity = Keep + ".activities.ShareReceiverActivity";
-    static WindowManager wm;
-    static LinearLayout ll;
-    static WindowManager.LayoutParams parameters;
-    static ImageButton openButton;
-    boolean isMoving;
-    SharedPreferences.Editor editor;
+
+    // variables
+    private WindowManager mWindowManager;
+    private WindowManager.LayoutParams Params;
+    private int windowHeight;
+    private int windowWidth;
+
+    // UI
+    private ImageView exitImage;
+    private ImageView openImage;
+
+    //preferences
+    SharedPreferences sharedPref;
     SharedPreferences prefsFragment;
+    SharedPreferences.Editor editor;
 
+    // methods
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mWindowManager = (WindowManager) getSystemService(Service.WINDOW_SERVICE);
 
+        prefsFragment = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        showHud();
+        return START_STICKY;
+    }
+
+    private void showHud() {
+        if (exitImage != null) {
+            mWindowManager.removeView(exitImage);
+            exitImage = null;
+        }
+
+        Params = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                PixelFormat.TRANSLUCENT);
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        mWindowManager.getDefaultDisplay().getMetrics(displaymetrics);
+        windowHeight = displaymetrics.heightPixels;
+        windowWidth = displaymetrics.widthPixels;
+
+        Params.gravity = Gravity.TOP | Gravity.END;
+
+        openImage = new ImageView(this);
+        openImage.setImageDrawable(getImage());
+        addOpenListener();
+
+        Params.x = 0;
+        Params.y = 100;
+
+        mWindowManager.addView(openImage, Params);
+        addCrumpledPaperOnTouchListener();
+        addOpenListener();
+    }
+
+    private void addCrumpledPaperOnTouchListener() {
+        openImage.setOnTouchListener(new View.OnTouchListener() {
+            private int initialX;
+            private int initialY;
+            private float initialTouchX;
+            private float initialTouchY;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+
+                    case MotionEvent.ACTION_DOWN:
+                        initialX = Params.x;
+                        initialY = Params.y;
+                        initialTouchX = event.getRawX();
+                        initialTouchY = event.getRawY();
+                        // add recycle bin when moving crumpled paper
+                        addExitView();
+
+                        return false;
+                    case MotionEvent.ACTION_UP:
+
+                        int centerOfScreenByX = windowWidth / 2;
+
+                        // remove crumpled paper when the it is in the recycle bin's area
+                        if ((Params.y > windowHeight - exitImage.getHeight() - openImage.getHeight()) &&
+                                ((Params.x > centerOfScreenByX - exitImage.getWidth() - openImage.getWidth() / 2) && (Params.x < centerOfScreenByX + exitImage.getWidth() / 2))) {
+                                stopSelf();
+                        }
+
+                        // always remove recycle bin ImageView when paper is dropped
+                        mWindowManager.removeView(exitImage);
+                        exitImage = null;
+
+                        return false;
+                    case MotionEvent.ACTION_MOVE:
+                        // move paper ImageView
+                        Params.x = initialX + (int) (initialTouchX - event.getRawX());
+                        Params.y = initialY + (int) (event.getRawY() - initialTouchY);
+                        mWindowManager.updateViewLayout(openImage, Params);
+                        return false;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void addExitView() {
+        // add recycle bin ImageView centered on the bottom of the screen
+        WindowManager.LayoutParams mRecycleBinParams = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                PixelFormat.TRANSLUCENT);
+
+        mRecycleBinParams.gravity = Gravity.BOTTOM | Gravity.CENTER;
+
+        exitImage = new ImageView(this);
+        exitImage.setImageResource(R.mipmap.ic_bubble2);
+
+        mRecycleBinParams.x = 0;
+        mRecycleBinParams.y = 25;
+
+        mWindowManager.addView(exitImage, mRecycleBinParams);
+
+        YoYo.with(Techniques.ZoomIn)
+                .duration(200)
+                .playOn(exitImage);
+    }
+
+    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
+    public void onDestroy() {
+        super.onDestroy();
 
-        SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);
-        prefsFragment = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPref.edit();
-        editor.apply();
+        // remove views on destroy!
+        if (openImage != null) {
+            mWindowManager.removeView(openImage);
+            openImage = null;
+        }
 
-        wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-        ll = new LinearLayout(this);
-        LinearLayout.LayoutParams layoutParameteres = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        ll.setBackgroundColor(Color.argb(0, 0, 0, 0));
-        ll.setLayoutParams(layoutParameteres);
+        if (exitImage != null) {
+            mWindowManager.removeView(exitImage);
+            exitImage = null;
+        }
+    }
 
+    public Drawable getImage(){
+        Drawable image = getResources().getDrawable(R.mipmap.ic_bubble1); //setting default fot android studio not not to give me na error
 
-        parameters = new WindowManager.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT);
-        parameters.gravity = Gravity.START;
-        parameters.x = 640;
-        parameters.y = -10;
-        openButton = new ImageButton(this);
-        openButton.setImageDrawable(getImage());
-        openButton.setBackgroundColor(Color.TRANSPARENT);
+        if (prefsFragment.getString("bubblechanger","").matches("1")){
+            image = getResources().getDrawable(R.mipmap.ic_bubble1);
+        } else if (prefsFragment.getString("bubblechanger","").matches("2")){
+            image = getResources().getDrawable(R.mipmap.ic_bubble2);
+        } else if (prefsFragment.getString("bubblechanger","").matches("3")){
+            image = getResources().getDrawable(R.mipmap.ic_bubble3);
+        }
+        return image;
+    }
 
-        openButton.setOnClickListener(new View.OnClickListener() {
+    public void addOpenListener(){
+        openImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                YoYo.with(Techniques.Pulse)
-                        .duration(1000)
-                        .playOn(openButton);
                 try {
                     Intent intent = new Intent();
                     intent.setClassName(Keep, Activity);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
+
                 } catch (ActivityNotFoundException e) {
                     final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(KeepBubbleService.this, R.style.AppTheme_MaterialDialogTheme);
 
@@ -155,128 +282,28 @@ public class KeepBubbleService extends Service {
                     dialog.show();
                 }
 
-            }
-        });
-
-        openButton.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-
-
-                final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(KeepBubbleService.this, R.style.AppTheme_MaterialDialogTheme);
-
-                dialogBuilder.setTitle("Exit?");
-                dialogBuilder.setMessage("Do you want to exit?");
-                dialogBuilder.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        }
-                );
-
-                dialogBuilder.setPositiveButton("Sure",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                exit();
-                            }
-                        });
-
-                final AlertDialog dialog = dialogBuilder.create();
-                final Window dialogWindow = dialog.getWindow();
-                assert dialogWindow != null;
-                final WindowManager.LayoutParams dialogWindowAttributes = dialogWindow.getAttributes();
-
-                // Set fixed width (280dp) and WRAP_CONTENT height
-                final WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                lp.copyFrom(dialogWindowAttributes);
-                lp.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 280, getResources().getDisplayMetrics());
-                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                dialogWindow.setAttributes(lp);
-
-                // Set to TYPE_SYSTEM_ALERT so that the Service can display it
-                dialogWindow.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-                dialog.show();
-                return true;
-
-            }
-        });
-
-
-        ViewGroup.LayoutParams btnParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        openButton.setLayoutParams(btnParameters);
-        ll.addView(openButton);
-        wm.addView(ll, parameters);
-
-        openButton.setOnTouchListener(new View.OnTouchListener() {
-            WindowManager.LayoutParams updatedParameters = parameters;
-            double x;
-            double y;
-            double pressedX;
-            double pressedY;
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        isMoving = true;
-                        x = updatedParameters.x;
-                        y = updatedParameters.y;
-
-                        pressedX = event.getRawX();
-                        pressedY = event.getRawY();
-
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-                        isMoving = true;
-                        updatedParameters.x = (int) (x + (event.getRawX() - pressedX));
-                        updatedParameters.y = (int) (y + (event.getRawY() - pressedY));
-
-                        wm.updateViewLayout(ll, updatedParameters);
-
-                    default:
-                        isMoving = false;
-                        break;
-                }
-                return false;
+                YoYo.with(Techniques.Pulse)
+                        .duration(700)
+                        .playOn(openImage);
             }
         });
     }
 
-
     public void exit() {
         YoYo.with(Techniques.ZoomOut)
-                .duration(1000)
-                .playOn(openButton);
+                .duration(700)
+                .playOn(openImage);
         Handler h = new Handler();
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                wm.removeViewImmediate(ll);
-                stopService(new Intent(KeepBubbleService.this, KeepBubbleService.class));
-                KeepBubbleService.this.stopSelf();
+                stopSelf();
             }
         }, 700);
 
         editor.putBoolean("isOn", false);
         editor.apply();
     }
-
-    public Drawable getImage(){
-        Drawable image = getResources().getDrawable(R.mipmap.ic_bubble1); //setting default fot android studio not not to give me na error
-
-        if (prefsFragment.getString("bubblechanger","").matches("1")){
-            image = getResources().getDrawable(R.mipmap.ic_bubble1);
-        } else if (prefsFragment.getString("futureoption","").matches("2")){
-            image = getResources().getDrawable(R.mipmap.ic_bubble2);
-        } else if (prefsFragment.getString("futureoption","").matches("3")){
-            image = getResources().getDrawable(R.mipmap.ic_bubble3);
-        }
-        return image;
-    }
-
 }
+
+

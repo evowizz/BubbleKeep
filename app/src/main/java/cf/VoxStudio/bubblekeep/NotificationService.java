@@ -21,7 +21,8 @@ public class NotificationService extends com.google.firebase.messaging.FirebaseM
         Uri webpage = Uri.parse(url);
 
 
-        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(webpage);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
         notificationBuilder.setContentTitle(remoteMessage.getNotification().getTitle());

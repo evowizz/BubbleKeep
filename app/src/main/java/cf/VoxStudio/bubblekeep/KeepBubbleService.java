@@ -113,6 +113,7 @@ public class KeepBubbleService extends Service {
         Params.y = 100;
 
         mWindowManager.addView(openImage, Params);
+        openImage.requestLayout();
         addOnTouchListener();
         addOpenListener();
     }
@@ -159,7 +160,7 @@ public class KeepBubbleService extends Service {
                         mWindowManager.updateViewLayout(openImage, Params);
                         return false;
                 }
-                return false;
+                return true;
             }
         });
     }

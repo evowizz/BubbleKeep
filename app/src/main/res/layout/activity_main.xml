@@ -8,6 +8,59 @@
     android:weightSum="1"
     tools:context="cf.VoxStudio.bubblekeep.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/toolbar"
+        android:elevation="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/switchLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" >
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <Button
+                android:layout_width="88dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:text="About"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/button2"
+                android:textColor="#ffffff"
+                app:layout_constraintLeft_toRightOf="@+id/textView2"
+                app:layout_constraintHorizontal_bias="1.0"
+                android:onClick="openAbout"/>
+
+            <TextView
+                android:text="@string/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="#ffffff"
+                android:layout_marginStart="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
     <fragment
         android:id="@+id/settings_fragment"
         android:name="cf.VoxStudio.bubblekeep.MyPreferencesActivity$MyPreferenceFragment"
@@ -31,14 +84,15 @@
         android:layout_height="58dp"
         android:background="#FBC02D"
         android:clickable="true"
-        android:elevation="6dp"
+        android:elevation="5dp"
         android:onClick="switchSwitch"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1">
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginTop="56dp"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/switchText"
@@ -64,6 +118,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>

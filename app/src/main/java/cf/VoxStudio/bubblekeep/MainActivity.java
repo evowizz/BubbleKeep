@@ -28,7 +28,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -145,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-    public void openAbout(View view){
+
+    public void openAbout(View view) {
         //TODO Launch the about activity
     }
 

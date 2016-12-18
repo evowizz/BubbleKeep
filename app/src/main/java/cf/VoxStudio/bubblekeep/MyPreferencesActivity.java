@@ -25,7 +25,7 @@ import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
-public class MyPreferencesActivity extends PreferenceActivity  {
+public class MyPreferencesActivity extends PreferenceActivity {
 
 
     @Override
@@ -35,11 +35,9 @@ public class MyPreferencesActivity extends PreferenceActivity  {
     }
 
 
-    public static class MyPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
-    {
+    public static class MyPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
         @Override
-        public void onCreate(final Bundle savedInstanceState)
-        {
+        public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
 
@@ -58,6 +56,7 @@ public class MyPreferencesActivity extends PreferenceActivity  {
             // Set up a listener whenever a key changes
             getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
         }
+
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             ListPreference lp = (ListPreference) findPreference("bubblechanger");
@@ -78,11 +77,6 @@ public class MyPreferencesActivity extends PreferenceActivity  {
             return false;
         }
     }
-
-
-
-
-
 
 
 }

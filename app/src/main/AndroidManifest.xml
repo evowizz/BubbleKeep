@@ -18,13 +18,13 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".KeepBubbleService" />
+        <service android:name=".KeepBubbleService" />
 
         <activity
             android:name=".MainIntroActivity"
             android:exported="false"
             android:theme="@style/Theme.Intro" />
+
         <service
             android:name=".BubbleKeepTileService"
             android:icon="@drawable/ic_lightbulb"

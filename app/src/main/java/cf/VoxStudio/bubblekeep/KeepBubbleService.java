@@ -43,7 +43,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
@@ -145,7 +144,7 @@ public class KeepBubbleService extends Service {
                         // remove crumpled paper when the it is in the recycle bin's area
                         if ((Params.y > windowHeight - exitImage.getHeight() - openImage.getHeight()) &&
                                 ((Params.x > centerOfScreenByX - exitImage.getWidth() - openImage.getWidth() / 2) && (Params.x < centerOfScreenByX + exitImage.getWidth() / 2))) {
-                                stopSelf();
+                            stopSelf();
                         }
 
                         // always remove recycle bin ImageView when paper is dropped
@@ -211,20 +210,20 @@ public class KeepBubbleService extends Service {
         }
     }
 
-    public Drawable getImage(){
+    public Drawable getImage() {
         Drawable image = ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_bubble1); //setting default fot android studio not not to give me na error
 
-        if (prefsFragment.getString("bubblechanger","").matches("1")){
+        if (prefsFragment.getString("bubblechanger", "").matches("1")) {
             image = ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_bubble1);
-        } else if (prefsFragment.getString("bubblechanger","").matches("2")){
+        } else if (prefsFragment.getString("bubblechanger", "").matches("2")) {
             image = ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_bubble2);
-        } else if (prefsFragment.getString("bubblechanger","").matches("3")){
+        } else if (prefsFragment.getString("bubblechanger", "").matches("3")) {
             image = ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_bubble3);
         }
         return image;
     }
 
-    public void addOpenListener(){
+    public void addOpenListener() {
         openImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

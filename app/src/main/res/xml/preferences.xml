@@ -8,7 +8,7 @@
             android:entryValues="@array/listValues"
             android:key="bubblechanger"
             android:summary="This option allows you to change the Bubble style"
-            android:title="Bubble style"/>
+            android:title="Bubble style" />
 
     </PreferenceCategory>
 </PreferenceScreen>

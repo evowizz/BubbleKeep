@@ -11,4 +11,14 @@
             android:title="Bubble style" />
 
     </PreferenceCategory>
+    <PreferenceCategory android:title="About">
+        <Preference
+            android:key="about"
+            android:title="About us">
+            <intent
+                android:targetPackage="cf.VoxStudio.bubblekeep"
+                android:targetClass="cf.VoxStudio.bubblekeep.AboutActivity"
+                />
+        </Preference>
+    </PreferenceCategory>
 </PreferenceScreen>

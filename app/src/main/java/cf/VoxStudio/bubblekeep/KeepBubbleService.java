@@ -42,6 +42,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Switch;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -51,21 +52,19 @@ public class KeepBubbleService extends Service {
     //keep stuff
     public final static String Keep = "com.google.android.keep";
     public final static String Activity = Keep + ".activities.ShareReceiverActivity";
-
+    Switch mainSwitch;
+    //preferences
+    SharedPreferences sharedPref;
+    SharedPreferences prefsFragment;
+    SharedPreferences.Editor editor;
     // variables
     private WindowManager mWindowManager;
     private WindowManager.LayoutParams Params;
     private int windowHeight;
     private int windowWidth;
-
     // UI
     private ImageView exitImage;
     private ImageView openImage;
-
-    //preferences
-    SharedPreferences sharedPref;
-    SharedPreferences prefsFragment;
-    SharedPreferences.Editor editor;
 
     // methods
     @Override
@@ -109,7 +108,7 @@ public class KeepBubbleService extends Service {
         addOpenListener();
 
         Params.x = 0;
-        Params.y = 100;
+        Params.y = 400;
 
         mWindowManager.addView(openImage, Params);
         openImage.requestLayout();
@@ -306,5 +305,7 @@ public class KeepBubbleService extends Service {
         editor.apply();
     }
 }
+
+
 
 

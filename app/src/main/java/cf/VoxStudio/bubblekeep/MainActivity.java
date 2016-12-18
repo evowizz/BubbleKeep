@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     String textOn = "On";
     String textOff = "Off";
+
     CompoundButton.OnCheckedChangeListener mainSwitchListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {

@@ -84,7 +84,6 @@
         android:layout_height="58dp"
         android:background="#FBC02D"
         android:clickable="true"
-        android:elevation="5dp"
         android:onClick="switchSwitch"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

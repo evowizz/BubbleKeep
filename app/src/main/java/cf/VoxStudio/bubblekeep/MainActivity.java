@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -57,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ActionBar actionbar = getSupportActionBar();
-        assert actionbar != null;
-        actionbar.setTitle(Html.fromHtml("<font color='#ffffff' style='bold'>" + getString(R.string.app_name) + "</font>"));
+        Toolbar Toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        setSupportActionBar(Toolbar);
 
         //Adding shared preferences
         SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);  //Main ones  -  used by every activity
@@ -145,6 +146,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    public void openAbout(View view) {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 
 }

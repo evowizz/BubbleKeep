@@ -9,7 +9,6 @@ import android.support.v7.app.NotificationCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
 
-//TODO: Make it running in background so the notifications don't have problems when users receive them
 public class NotificationService extends com.google.firebase.messaging.FirebaseMessagingService {
 
 

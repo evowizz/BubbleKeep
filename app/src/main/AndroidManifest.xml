@@ -18,14 +18,15 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".KeepBubbleService" />
+        <service android:name=".KeepBubbleService" />
 
         <activity
             android:name=".MainIntroActivity"
             android:exported="false"
             android:theme="@style/Theme.Intro" />
+        <activity android:name=".AboutActivity"/>
         <fragment android:name=".PrefsActivity"></fragment>
+
 
         <service
             android:name=".BubbleKeepTileService"
@@ -46,6 +47,11 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
             </intent-filter>
         </service>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="a907d0ac603df08b4d96af6adb39c0e7449d92c4" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

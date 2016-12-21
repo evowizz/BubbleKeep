@@ -16,15 +16,20 @@ The preferences fragment
 
 package cf.VoxStudio.bubblekeep;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class MyPreferencesActivity extends PreferenceActivity  {
 
@@ -61,12 +66,18 @@ public class MyPreferencesActivity extends PreferenceActivity  {
         }
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            ListPreference lp = (ListPreference) findPreference("bubblechanger");
 
             if (key.matches("bubblechanger") && isServiceRunning(KeepBubbleService.class, getActivity())) {
                 getActivity().stopService(new Intent(getActivity(), KeepBubbleService.class));
                 getActivity().startService(new Intent(getActivity(), KeepBubbleService.class));
+                Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
+                killLauncher();
+
+            }else if (key.matches("bubblechanger")){
+                Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
+                killLauncher();
             }
+
         }
 
         private boolean isServiceRunning(Class<?> serviceClass, Context c) {
@@ -78,6 +89,24 @@ public class MyPreferencesActivity extends PreferenceActivity  {
             }
             return false;
         }
+
+        private void killLauncher(){
+            PackageManager pm = getActivity().getPackageManager();
+            ActivityManager am = (ActivityManager) getActivity().getSystemService(Activity.ACTIVITY_SERVICE);
+
+            // Find launcher and kill it
+            Intent i = new Intent(Intent.ACTION_MAIN);
+            i.addCategory(Intent.CATEGORY_HOME);
+            i.addCategory(Intent.CATEGORY_DEFAULT);
+            List<ResolveInfo> resolves = pm.queryIntentActivities(i, 0);
+            for (ResolveInfo res : resolves) {
+                if (res.activityInfo != null) {
+                    am.killBackgroundProcesses(res.activityInfo.packageName);
+                }
+            }
+        }
+
+
     }
 
 

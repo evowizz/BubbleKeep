@@ -19,13 +19,19 @@ The main activity/screen
 
 package cf.VoxStudio.bubblekeep;
 
+import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.provider.SyncStateContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -35,6 +41,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     //Here are the variables
     Switch mainSwitch;
@@ -42,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     String textOn = "On";
     String textOff = "Off";
+    SharedPreferences prefsFragment;
 
     CompoundButton.OnCheckedChangeListener mainSwitchListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -66,10 +75,14 @@ public class MainActivity extends AppCompatActivity {
         //Adding shared preferences
         SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);  //Main ones  -  used by every activity
         SharedPreferences introPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);  //Intro preferences  -  used only to check if user has seen intro
+        prefsFragment = PreferenceManager.getDefaultSharedPreferences(this); //SharedPreferences used by PrefsFragment
         editor = sharedPref.edit();  //shared preferences editor
         //assigning variables
         mainSwitch = (Switch) findViewById(R.id.main_switch);
         switchText = (TextView) findViewById(R.id.switchText);
+
+
+        setIcon(getIcon());
 
 
         //setting on change listener to main switch
@@ -154,4 +167,50 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-}
+
+
+    private void setIcon(int icon) {
+        Context ctx = getApplicationContext();
+        PackageManager pm = this.getPackageManager();
+        // Enable/disable activity-aliases
+
+        if (icon == R.mipmap.ic_bubble1) {
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        } else if (icon == R.mipmap.ic_bubble2) {
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        } else if (icon == R.mipmap.ic_bubble3) {
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            pm.setComponentEnabledSetting(
+                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        }
+    }
+
+
+    public int getIcon() {
+        int image;
+        if (prefsFragment.getString("bubblechanger", "").matches("1")) {
+            image = R.mipmap.ic_bubble1;
+        } else if (prefsFragment.getString("bubblechanger", "").matches("2")) {
+            image = R.mipmap.ic_bubble2;
+        } else if (prefsFragment.getString("bubblechanger", "").matches("3")) {
+            image = R.mipmap.ic_bubble3;
+        }else {
+            image = R.mipmap.ic_bubble1;
+        }
+        return image;
+    }
+ }
+

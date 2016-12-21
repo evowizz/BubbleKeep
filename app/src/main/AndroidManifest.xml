@@ -23,7 +23,7 @@
             android:enabled="true"
             android:name=".MainActivity-Bubble1"
             android:label="@string/app_name"
-            android:icon="@mipmap/ic_bubble1"
+            android:icon="@mipmap/ic_launcher"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

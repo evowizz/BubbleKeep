@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         PackageManager pm = this.getPackageManager();
         // Enable/disable activity-aliases
 
-        if (icon == R.mipmap.ic_bubble1) {
+        if (icon == R.mipmap.ic_launcher) {
             pm.setComponentEnabledSetting(
                     new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
             pm.setComponentEnabledSetting(
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
     public int getIcon() {
         int image;
         if (prefsFragment.getString("bubblechanger", "").matches("1")) {
-            image = R.mipmap.ic_bubble1;
+            image = R.mipmap.ic_launcher;
         } else if (prefsFragment.getString("bubblechanger", "").matches("2")) {
             image = R.mipmap.ic_bubble2;
         } else if (prefsFragment.getString("bubblechanger", "").matches("3")) {

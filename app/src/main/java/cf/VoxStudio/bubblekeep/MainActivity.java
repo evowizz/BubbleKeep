@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void setIcon(int icon) {
         Context ctx = getApplicationContext();
         PackageManager pm = this.getPackageManager();
@@ -200,10 +199,10 @@ public class MainActivity extends AppCompatActivity {
             image = R.mipmap.ic_bubble2;
         } else if (prefsFragment.getString("bubblechanger", "").matches("3")) {
             image = R.mipmap.ic_bubble3;
-        }else {
+        } else {
             image = R.mipmap.ic_bubble1;
         }
         return image;
     }
- }
+}
 

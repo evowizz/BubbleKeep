@@ -30,7 +30,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class MyPreferencesActivity extends PreferenceActivity  {
+public class MyPreferencesActivity extends PreferenceActivity {
 
 
     @Override
@@ -40,12 +40,10 @@ public class MyPreferencesActivity extends PreferenceActivity  {
     }
 
 
-    public static class MyPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
-    {
+    public static class MyPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
         @Override
-        public void onCreate(final Bundle savedInstanceState)
-        {
+        public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
         }
@@ -63,6 +61,7 @@ public class MyPreferencesActivity extends PreferenceActivity  {
             // Set up a listener whenever a key changes
             getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
         }
+
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
@@ -72,7 +71,7 @@ public class MyPreferencesActivity extends PreferenceActivity  {
                 Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
                 killLauncher();
 
-            }else if (key.matches("bubblechanger")){
+            } else if (key.matches("bubblechanger")) {
                 Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
                 killLauncher();
             }
@@ -89,7 +88,7 @@ public class MyPreferencesActivity extends PreferenceActivity  {
             return false;
         }
 
-        private void killLauncher(){
+        private void killLauncher() {
             PackageManager pm = getActivity().getPackageManager();
             ActivityManager am = (ActivityManager) getActivity().getSystemService(Activity.ACTIVITY_SERVICE);
 
@@ -107,11 +106,6 @@ public class MyPreferencesActivity extends PreferenceActivity  {
 
 
     }
-
-
-
-
-
 
 
 }

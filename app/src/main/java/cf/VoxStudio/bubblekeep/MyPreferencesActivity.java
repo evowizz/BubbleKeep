@@ -46,7 +46,6 @@ public class MyPreferencesActivity extends PreferenceActivity {
 
         SharedPreferences prefsFragment;
 
-
         @Override
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -71,16 +70,17 @@ public class MyPreferencesActivity extends PreferenceActivity {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
+
             if (key.matches("bubblechanger") && isServiceRunning(KeepBubbleService.class, getActivity())) {
                 getActivity().stopService(new Intent(getActivity(), KeepBubbleService.class));
                 getActivity().startService(new Intent(getActivity(), KeepBubbleService.class));
 
-            } else if (key.matches("launcher-icon-changer")){
-                setIcon(getIcon(),getActivity());
+            } else if (key.matches("launcher-icon-changer")) {
+                setIcon(getIcon(), getActivity());
                 killLauncher();
                 Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
             }
-            
+
 
         }
 
@@ -91,38 +91,55 @@ public class MyPreferencesActivity extends PreferenceActivity {
 
             if (icon == R.mipmap.ic_launcher) {
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"),
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"),
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"),
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
             } else if (icon == R.mipmap.ic_bubble2) {
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"),
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"),
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"),
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
             } else if (icon == R.mipmap.ic_bubble3) {
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"),
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"),
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
                 pm.setComponentEnabledSetting(
-                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"),
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
             }
 
-            Toast.makeText(getActivity(),"D",Toast.LENGTH_LONG).show();
         }
 
 
         public int getIcon() {
             int image;
-            if (prefsFragment.getString("bubblechanger", "").matches("1")) {
+            if (prefsFragment.getString("launcher-icon-changer", "").matches("1")) {
                 image = R.mipmap.ic_launcher;
-            } else if (prefsFragment.getString("bubblechanger", "").matches("2")) {
+            } else if (prefsFragment.getString("launcher-icon-changer", "").matches("2")) {
                 image = R.mipmap.ic_bubble2;
-            } else if (prefsFragment.getString("bubblechanger", "").matches("3")) {
+            } else if (prefsFragment.getString("launcher-icon-changer", "").matches("3")) {
                 image = R.mipmap.ic_bubble3;
             } else {
                 image = R.mipmap.ic_bubble1;

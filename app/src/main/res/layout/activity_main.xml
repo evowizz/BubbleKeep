@@ -49,7 +49,6 @@
     </android.support.v7.widget.Toolbar>
 
 
-
     <RelativeLayout
         android:id="@+id/switchLayout"
         android:layout_width="match_parent"
@@ -91,7 +90,7 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         android:layout_height="match_parent"
-        android:layout_below="@id/switchLayout"/>
+        android:layout_below="@id/switchLayout" />
 
 
 </RelativeLayout>

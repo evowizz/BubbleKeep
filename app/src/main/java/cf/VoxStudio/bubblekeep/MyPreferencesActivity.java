@@ -75,6 +75,7 @@ public class MyPreferencesActivity extends PreferenceActivity {
                 Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
                 killLauncher();
             }
+            
 
         }
 

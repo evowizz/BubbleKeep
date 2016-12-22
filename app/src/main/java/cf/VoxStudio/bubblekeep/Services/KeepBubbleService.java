@@ -17,7 +17,7 @@ The bubble service
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package cf.VoxStudio.bubblekeep;
+package cf.VoxStudio.bubblekeep.Services;
 
 import android.app.AlertDialog;
 import android.app.Service;
@@ -46,6 +46,8 @@ import android.widget.Switch;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+
+import cf.VoxStudio.bubblekeep.R;
 
 public class KeepBubbleService extends Service {
 

@@ -34,6 +34,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import cf.VoxStudio.bubblekeep.Services.KeepBubbleService;
+
 public class MainActivity extends AppCompatActivity {
     //Here are the variables
     Switch mainSwitch;

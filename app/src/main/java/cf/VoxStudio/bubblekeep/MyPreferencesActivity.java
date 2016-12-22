@@ -32,6 +32,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import cf.VoxStudio.bubblekeep.Services.KeepBubbleService;
+
 public class MyPreferencesActivity extends PreferenceActivity {
 
 

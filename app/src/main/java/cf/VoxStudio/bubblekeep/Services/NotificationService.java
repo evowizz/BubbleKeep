@@ -1,4 +1,4 @@
-package cf.VoxStudio.bubblekeep;
+package cf.VoxStudio.bubblekeep.Services;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.support.v7.app.NotificationCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
+
+import cf.VoxStudio.bubblekeep.R;
 
 public class NotificationService extends com.google.firebase.messaging.FirebaseMessagingService {
 

@@ -18,6 +18,7 @@ package cf.VoxStudio.bubblekeep;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +27,7 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import java.util.List;
@@ -42,10 +44,14 @@ public class MyPreferencesActivity extends PreferenceActivity {
 
     public static class MyPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+        SharedPreferences prefsFragment;
+
+
         @Override
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
+            prefsFragment = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
         }
 
         @Override
@@ -68,15 +74,60 @@ public class MyPreferencesActivity extends PreferenceActivity {
             if (key.matches("bubblechanger") && isServiceRunning(KeepBubbleService.class, getActivity())) {
                 getActivity().stopService(new Intent(getActivity(), KeepBubbleService.class));
                 getActivity().startService(new Intent(getActivity(), KeepBubbleService.class));
-                Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
-                killLauncher();
 
-            } else if (key.matches("bubblechanger")) {
-                Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
+            } else if (key.matches("launcher-icon-changer")){
+                setIcon(getIcon(),getActivity());
                 killLauncher();
+                Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
             }
             
 
+        }
+
+
+        public void setIcon(int icon, Context ctx) {
+            PackageManager pm = getActivity().getPackageManager();
+            // Enable/disable activity-aliases
+
+            if (icon == R.mipmap.ic_launcher) {
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            } else if (icon == R.mipmap.ic_bubble2) {
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            } else if (icon == R.mipmap.ic_bubble3) {
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                pm.setComponentEnabledSetting(
+                        new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            }
+
+            Toast.makeText(getActivity(),"D",Toast.LENGTH_LONG).show();
+        }
+
+
+        public int getIcon() {
+            int image;
+            if (prefsFragment.getString("bubblechanger", "").matches("1")) {
+                image = R.mipmap.ic_launcher;
+            } else if (prefsFragment.getString("bubblechanger", "").matches("2")) {
+                image = R.mipmap.ic_bubble2;
+            } else if (prefsFragment.getString("bubblechanger", "").matches("3")) {
+                image = R.mipmap.ic_bubble3;
+            } else {
+                image = R.mipmap.ic_bubble1;
+            }
+            return image;
         }
 
         private boolean isServiceRunning(Class<?> serviceClass, Context c) {

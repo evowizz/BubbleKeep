@@ -4,21 +4,19 @@
 
         <ListPreference
             android:defaultValue="1"
-            android:entries="@array/listArray"
-            android:entryValues="@array/listValues"
+            android:entries="@array/bubbleArray"
+            android:entryValues="@array/bubbleValues"
             android:key="bubblechanger"
             android:summary="This option allows you to change the Bubble style"
             android:title="Bubble style" />
 
-    </PreferenceCategory>
-    <PreferenceCategory android:title="About">
-        <Preference
-            android:key="about"
-            android:title="About us">
-            <intent
-                android:targetPackage="cf.VoxStudio.bubblekeep"
-                android:targetClass="cf.VoxStudio.bubblekeep.AboutActivity"
-                />
-        </Preference>
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/launcherArray"
+            android:entryValues="@array/launcherValues"
+            android:key="launcher-icon-changer"
+            android:summary="If you wan't a new icon in the launcher you are at the right place"
+            android:title="Launcher icon style" />
+
     </PreferenceCategory>
 </PreferenceScreen>

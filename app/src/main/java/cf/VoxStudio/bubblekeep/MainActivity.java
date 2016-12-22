@@ -20,11 +20,9 @@ The main activity/screen
 package cf.VoxStudio.bubblekeep;
 
 import android.app.ActivityManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -73,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
         //assigning variables
         mainSwitch = (Switch) findViewById(R.id.main_switch);
         switchText = (TextView) findViewById(R.id.switchText);
-
-
-        setIcon(getIcon());
 
 
         //setting on change listener to main switch
@@ -161,48 +156,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void setIcon(int icon) {
-        Context ctx = getApplicationContext();
-        PackageManager pm = this.getPackageManager();
-        // Enable/disable activity-aliases
-
-        if (icon == R.mipmap.ic_launcher) {
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-        } else if (icon == R.mipmap.ic_bubble2) {
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-        } else if (icon == R.mipmap.ic_bubble3) {
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble3"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble1"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-            pm.setComponentEnabledSetting(
-                    new ComponentName(ctx, "cf.VoxStudio.bubblekeep.MainActivity-Bubble2"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-        }
-    }
-
-
-    public int getIcon() {
-        int image;
-        if (prefsFragment.getString("bubblechanger", "").matches("1")) {
-            image = R.mipmap.ic_launcher;
-        } else if (prefsFragment.getString("bubblechanger", "").matches("2")) {
-            image = R.mipmap.ic_bubble2;
-        } else if (prefsFragment.getString("bubblechanger", "").matches("3")) {
-            image = R.mipmap.ic_bubble3;
-        } else {
-            image = R.mipmap.ic_bubble1;
-        }
-        return image;
-    }
 }
 

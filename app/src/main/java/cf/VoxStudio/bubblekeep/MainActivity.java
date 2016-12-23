@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         setSupportActionBar(Toolbar);
 
+        //setting navigation bar color
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+
         //Adding shared preferences
         SharedPreferences sharedPref = getSharedPreferences("MainPrefs", Context.MODE_PRIVATE);  //Main ones  -  used by every activity
         SharedPreferences introPref = getSharedPreferences("IntroPref", Context.MODE_PRIVATE);  //Intro preferences  -  used only to check if user has seen intro

@@ -33,25 +33,164 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp">
-
-        <ScrollView
+        android:layout_below="@id/toolbar"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+
+            <!--EvoWizz starts here!-->
+            <RelativeLayout
+                android:id="@+id/EvoWizz_card"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corners">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="EvoWizz"
+                    android:layout_alignParentStart="true"
+                    android:textSize="17sp"
+                    android:gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/aboutTextColor"/>
+
+                <ImageView
+                    android:id="@+id/EvoWizz_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_36dp"
+                    android:rotation="-90" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/EvoWizz_card_bellow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_below="@id/EvoWizz_card"
+                android:visibility="gone"
+                android:background="@drawable/rounded_corners_bottom">
+
+                <RelativeLayout
+                    android:id="@+id/EvoWizz_twitter"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/aboutDropDown">
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Twitter: @EvoWizz"
+                        android:gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_alignParentStart="true"
+                        android:textColor="@color/aboutTextColor"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/EvoWizz_seperator1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/EvoWizz_twitter"
+                    android:background="#99ffffff"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/EvoWizz_facebook"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/aboutDropDown"
+                    android:layout_below="@id/EvoWizz_seperator1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Facebook: EvoWizz"
+                        android:gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_alignParentStart="true"
+                        android:textColor="@color/aboutTextColor"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <!--Vojtechh starts here!-->
+
+            <RelativeLayout
+                android:id="@+id/vojtechh_card"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corners"
+                android:layout_below="@id/EvoWizz_card_bellow"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Vojtěch Hořánek"
+                    android:layout_alignParentStart="true"
+                    android:textSize="17sp"
+                    android:gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/aboutTextColor"/>
+
+                <ImageView
+                    android:id="@+id/vojtechh_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_36dp"
+                    android:rotation="-90" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/vojtechh_card_bellow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_below="@id/vojtechh_card"
+                android:visibility="gone"
+                android:background="@drawable/rounded_corners_bottom">
+
+                <RelativeLayout
+                    android:id="@+id/vojtechh_twitter"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/aboutDropDown">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Twitter: @Vojtuv_tweet"
+                        android:gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_alignParentStart="true"
+                        android:textColor="@color/aboutTextColor"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
 
 
 
-            <include layout="@layout/content_main" />
-
-
-        </ScrollView>
-
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

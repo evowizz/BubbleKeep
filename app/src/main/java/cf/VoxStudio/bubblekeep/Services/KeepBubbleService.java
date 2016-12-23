@@ -285,7 +285,7 @@ public class KeepBubbleService extends Service {
                 }
 
                 YoYo.with(Techniques.Pulse)
-                        .duration(700)
+                        .duration(400)
                         .playOn(openImage);
             }
         });

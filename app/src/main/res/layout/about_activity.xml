@@ -3,7 +3,8 @@
     android:id="@+id/about_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#fafafa">
     <!-- TODO: We need to finish it -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -36,31 +37,51 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:paddingTop="8dp">
+        android:layout_below="@id/toolbar">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/VoxLogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_vox_studio"
+                android:layout_marginTop="24dp"/>
+
+            <TextView android:id="@+id/developers_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Developers"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorPrimary"
+                android:paddingStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/VoxLogo"
+                android:textStyle="bold"/>
 
 
             <!--EvoWizz starts here!-->
             <RelativeLayout
                 android:id="@+id/EvoWizz_card"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/rounded_corners">
+                android:layout_height="50dp"
+                android:background="@color/aboutItem"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/developers_text">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="EvoWizz"
-                    android:layout_alignParentStart="true"
-                    android:textSize="17sp"
-                    android:gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:textColor="@color/aboutTextColor"/>
+                <ImageView
+                    android:id="@+id/EvoWizz_profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/evowizz"
+                    android:layout_alignParentStart="true"/>
 
                 <ImageView
                     android:id="@+id/EvoWizz_arrow"
@@ -68,7 +89,22 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/ic_keyboard_arrow_right_black_36dp"
-                    android:rotation="-90" />
+                    android:layout_marginEnd="8dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:maxWidth="20dp"
+                    android:maxHeight="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="EvoWizz"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@color/aboutTextColor"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/EvoWizz_profile_image"
+                    android:layout_marginStart="8dp"/>
 
             </RelativeLayout>
             
@@ -76,57 +112,96 @@
                 android:id="@+id/EvoWizz_card_bellow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
+                android:paddingStart="16dp"
                 android:layout_below="@id/EvoWizz_card"
                 android:visibility="gone"
-                android:background="@drawable/rounded_corners_bottom">
+                android:background="@color/aboutDropDown">
 
                 <RelativeLayout
                     android:id="@+id/EvoWizz_twitter"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/aboutDropDown">
+                    android:background="@color/aboutDropDown"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/EvoWizz_twitter_icon"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/twitter_logo"
+                        android:layout_alignParentStart="true" />
                     
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Twitter: @EvoWizz"
+                        android:text="\@EvoWizz"
                         android:gravity="center"
                         android:layout_marginStart="8dp"
-                        android:layout_alignParentStart="true"
-                        android:textColor="@color/aboutTextColor"/>
+                        android:textColor="@color/aboutTextColor"
+                        android:layout_toEndOf="@+id/EvoWizz_twitter_icon"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_arrow_forward"
+                        android:layout_alignParentEnd="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:maxWidth="22dp"
+                        android:maxHeight="22dp"
+                        android:layout_marginEnd="16dp"/>
 
                 </RelativeLayout>
 
-                <View
-                    android:id="@+id/EvoWizz_seperator1"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@id/EvoWizz_twitter"
-                    android:background="#99ffffff"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"/>
+
 
                 <RelativeLayout
-                    android:id="@+id/EvoWizz_facebook"
+                    android:id="@+id/EvoWizz_google"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@color/aboutDropDown"
-                    android:layout_below="@id/EvoWizz_seperator1">
+                    android:layout_below="@id/EvoWizz_twitter"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:id="@+id/EvoWizz_google_icon"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/google_plus_logo"
+                        android:layout_alignParentStart="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Facebook: EvoWizz"
+                        android:text="+EvoWizz"
                         android:gravity="center"
                         android:layout_marginStart="8dp"
-                        android:layout_alignParentStart="true"
+                        android:layout_toEndOf="@id/EvoWizz_google_icon"
                         android:textColor="@color/aboutTextColor"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_arrow_forward"
+                        android:layout_alignParentEnd="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:maxWidth="22dp"
+                        android:maxHeight="22dp"
+                        android:layout_marginEnd="16dp"/>
 
                 </RelativeLayout>
 
             </RelativeLayout>
+
+
+            <View
+                android:id="@+id/dev_seperator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/EvoWizz_card"
+                android:background="#E0E0E0" />
 
             <!--Vojtechh starts here!-->
 
@@ -134,19 +209,19 @@
                 android:id="@+id/vojtechh_card"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/rounded_corners"
+                android:background="@color/aboutItem"
                 android:layout_below="@id/EvoWizz_card_bellow"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Vojtěch Hořánek"
-                    android:layout_alignParentStart="true"
-                    android:textSize="17sp"
-                    android:gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:textColor="@color/aboutTextColor"/>
+                <ImageView
+                    android:id="@+id/vojtechh_profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/vojtechh"
+                    android:layout_alignParentStart="true"/>
+
 
                 <ImageView
                     android:id="@+id/vojtechh_arrow"
@@ -154,7 +229,22 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/ic_keyboard_arrow_right_black_36dp"
-                    android:rotation="-90" />
+                    android:layout_marginRight="8dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:maxWidth="20dp"
+                    android:maxHeight="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Vojtěch Hořánek"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@color/aboutTextColor"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/vojtechh_profile_image"
+                    android:layout_marginStart="8dp"/>
 
             </RelativeLayout>
 
@@ -167,22 +257,82 @@
                 android:layout_marginEnd="0dp"
                 android:layout_below="@id/vojtechh_card"
                 android:visibility="gone"
-                android:background="@drawable/rounded_corners_bottom">
+                android:background="@color/aboutDropDown"
+                android:paddingStart="16dp">
 
                 <RelativeLayout
                     android:id="@+id/vojtechh_twitter"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/aboutDropDown">
+                    android:background="@color/aboutDropDown"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:id="@+id/vojtechh_twitter_icon"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/twitter_logo"
+                        android:layout_alignParentStart="true"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Twitter: @Vojtuv_tweet"
+                        android:text="\@Vojtuv_tweet"
+                        android:gravity="center"
+                        android:textColor="@color/aboutTextColor"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/vojtechh_twitter_icon"
+                        android:layout_marginStart="8dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_arrow_forward"
+                        android:layout_alignParentEnd="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:maxWidth="22dp"
+                        android:maxHeight="22dp"
+                        android:layout_marginEnd="16dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/vojtechh_google"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/aboutDropDown"
+                    android:layout_below="@id/vojtechh_twitter"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:id="@+id/vojtechh_google_icon"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/google_plus_logo"
+                        android:layout_alignParentStart="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="+VojtěchHořánek"
                         android:gravity="center"
                         android:layout_marginStart="8dp"
-                        android:layout_alignParentStart="true"
+                        android:layout_toEndOf="@id/vojtechh_google_icon"
                         android:textColor="@color/aboutTextColor"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_arrow_forward"
+                        android:layout_alignParentEnd="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:maxWidth="20dp"
+                        android:maxHeight="20dp"
+                        android:layout_marginEnd="16dp"/>
 
                 </RelativeLayout>
 

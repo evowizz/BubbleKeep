@@ -46,8 +46,9 @@ public class AboutActivity extends AppCompatActivity {
         final RelativeLayout VojtechhCardBellow = (RelativeLayout) findViewById(R.id.vojtechh_card_bellow);
 
         final RelativeLayout EvoWizzTwitter = (RelativeLayout) findViewById(R.id.EvoWizz_twitter);
-        final RelativeLayout EvoWizzFacebook = (RelativeLayout) findViewById(R.id.EvoWizz_facebook);
+        final RelativeLayout EvoWizzGoogle = (RelativeLayout) findViewById(R.id.EvoWizz_google);
         final RelativeLayout VojtechhTwitter = (RelativeLayout) findViewById(R.id.vojtechh_twitter);
+        final RelativeLayout VojtechhGoogle = (RelativeLayout) findViewById(R.id.vojtechh_google);
 
         final ImageView EvoWizzArrow = (ImageView) findViewById(R.id.EvoWizz_arrow);
         final ImageView VojtechhArrow = (ImageView) findViewById(R.id.vojtechh_arrow);
@@ -63,17 +64,15 @@ public class AboutActivity extends AppCompatActivity {
                     EvoWizzCardBellow.startAnimation(animationFadeIn);
                     EvoWizzCardBellow.setVisibility(View.VISIBLE);
                     EvoWizzArrow.animate().rotation(90).start();
-                    EvoWizzCard.setBackground(getResources().getDrawable(R.drawable.rounded_corners_top));
                     isEvoWizzHidden = false;
                 }else {
 
                     EvoWizzCardBellow.startAnimation(animationFadeOut);
-                    EvoWizzArrow.animate().rotation(-90).start();
+                    EvoWizzArrow.animate().rotation(0).start();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             EvoWizzCardBellow.setVisibility(View.GONE);
-                            EvoWizzCard.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
                         }
                     }, 100);
                     isEvoWizzHidden = true;
@@ -87,19 +86,17 @@ public class AboutActivity extends AppCompatActivity {
                 if (isVojtechhHidden){
                     VojtechhCardBellow.startAnimation(animationFadeIn);
                     VojtechhCardBellow.setVisibility(View.VISIBLE);
-                    VojtechhCard.setBackground(getResources().getDrawable(R.drawable.rounded_corners_top));
                     VojtechhArrow.animate().rotation(90).start();
                     isVojtechhHidden = false;
 
                 }else {
 
                     VojtechhCardBellow.startAnimation(animationFadeOut);
-                    VojtechhArrow.animate().rotation(-90).start();
+                    VojtechhArrow.animate().rotation(0).start();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             VojtechhCardBellow.setVisibility(View.GONE);
-                            VojtechhCard.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
 
                         }
                     }, 100);
@@ -117,10 +114,10 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        EvoWizzFacebook.setOnClickListener(new View.OnClickListener() {
+        EvoWizzGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://bfy.tw/96aG"));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/+EvoWizz"));
                 startActivity(i);
             }
         });
@@ -129,6 +126,14 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/Vojtuv_tweet"));
+                startActivity(i);
+            }
+        });
+
+        VojtechhGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/+VojtěchHořánek"));
                 startActivity(i);
             }
         });

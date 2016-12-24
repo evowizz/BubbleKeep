@@ -56,37 +56,13 @@ public class AboutActivity extends AppCompatActivity {
         final Animation animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         final Animation animationFadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
 
-        EvoWizzCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (isEvoWizzHidden){
-                    EvoWizzCardBellow.startAnimation(animationFadeIn);
-                    EvoWizzCardBellow.setVisibility(View.VISIBLE);
-                    EvoWizzArrow.animate().rotation(90).start();
-                    isEvoWizzHidden = false;
-                }else {
-
-                    EvoWizzCardBellow.startAnimation(animationFadeOut);
-                    EvoWizzArrow.animate().rotation(0).start();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            EvoWizzCardBellow.setVisibility(View.GONE);
-                        }
-                    }, 100);
-                    isEvoWizzHidden = true;
-                }
-            }
-        });
-
         VojtechhCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isVojtechhHidden){
                     VojtechhCardBellow.startAnimation(animationFadeIn);
                     VojtechhCardBellow.setVisibility(View.VISIBLE);
-                    VojtechhArrow.animate().rotation(90).start();
+                    VojtechhArrow.animate().rotation(180).start();
                     isVojtechhHidden = false;
 
                 }else {
@@ -101,6 +77,30 @@ public class AboutActivity extends AppCompatActivity {
                         }
                     }, 100);
                     isVojtechhHidden = true;
+                }
+            }
+        });
+
+        EvoWizzCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (isEvoWizzHidden){
+                    EvoWizzCardBellow.startAnimation(animationFadeIn);
+                    EvoWizzCardBellow.setVisibility(View.VISIBLE);
+                    EvoWizzArrow.animate().rotation(180).start();
+                    isEvoWizzHidden = false;
+                }else {
+
+                    EvoWizzCardBellow.startAnimation(animationFadeOut);
+                    EvoWizzArrow.animate().rotation(0).start();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            EvoWizzCardBellow.setVisibility(View.GONE);
+                        }
+                    }, 100);
+                    isEvoWizzHidden = true;
                 }
             }
         });

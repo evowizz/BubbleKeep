@@ -30,7 +30,4 @@
         <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
         <item name="android:textColorTertiary">@color/colorAccent</item>
     </style>
-
-
-
 </resources>

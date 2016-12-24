@@ -14,7 +14,7 @@
         android:theme="?attr/actionBarTheme"
         android:minHeight="?attr/actionBarSize"
         android:id="@+id/toolbar"
-        android:elevation="6dp">
+        android:elevation="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@null"
+                android:background="?attr/selectableItemBackground"
                 android:text="About"
                 android:id="@+id/about_btn"
                 android:textColor="#ffffff"
@@ -44,19 +44,22 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true" />
 
+
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 
-
     <RelativeLayout
         android:id="@+id/switchLayout"
+
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:background="#FBC02D"
+        android:layout_height="?attr/actionBarSize"
         android:clickable="true"
         android:onClick="switchSwitch"
-        android:layout_below="@id/toolbar">
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="#FBC02D"
+        android:layout_below="@id/toolbar"
+        >
 
         <Switch
             android:id="@+id/main_switch"

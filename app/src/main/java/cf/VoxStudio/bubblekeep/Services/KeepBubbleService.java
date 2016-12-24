@@ -184,7 +184,7 @@ public class KeepBubbleService extends Service {
 
         mWindowManager.addView(exitImage, mRecycleBinParams);
 
-        YoYo.with(Techniques.ZoomIn)
+        YoYo.with(Techniques.FadeIn)
                 .duration(200)
                 .playOn(exitImage);
     }

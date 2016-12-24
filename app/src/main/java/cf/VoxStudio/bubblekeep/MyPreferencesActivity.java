@@ -24,6 +24,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
@@ -81,6 +83,18 @@ public class MyPreferencesActivity extends PreferenceActivity {
                 setIcon(getIcon(), getActivity());
                 killLauncher();
                 Toast.makeText(getActivity(), "Launcher restart might be required for the launcher icon to change", Toast.LENGTH_LONG).show();
+            } else if (key.matches("navbarcolor")){
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (sharedPreferences.getBoolean("navbarcolor", true)) {
+                        getActivity().getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
+                        getActivity().recreate();
+                    } else if (!sharedPreferences.getBoolean("navbarcolor", true)) {
+                        getActivity().getWindow().setNavigationBarColor(Color.parseColor("#000000"));
+                        getActivity().recreate();
+                    }
+                }
+
             }
 
 

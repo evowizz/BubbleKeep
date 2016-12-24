@@ -50,36 +50,15 @@ public class AboutActivity extends AppCompatActivity {
         final RelativeLayout VojtechhTwitter = (RelativeLayout) findViewById(R.id.vojtechh_twitter);
         final RelativeLayout VojtechhGoogle = (RelativeLayout) findViewById(R.id.vojtechh_google);
 
+        final View seperator = findViewById(R.id.dev_seperator);
+
         final ImageView EvoWizzArrow = (ImageView) findViewById(R.id.EvoWizz_arrow);
         final ImageView VojtechhArrow = (ImageView) findViewById(R.id.vojtechh_arrow);
 
         final Animation animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         final Animation animationFadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
 
-        VojtechhCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isVojtechhHidden){
-                    VojtechhCardBellow.startAnimation(animationFadeIn);
-                    VojtechhCardBellow.setVisibility(View.VISIBLE);
-                    VojtechhArrow.animate().rotation(180).start();
-                    isVojtechhHidden = false;
-
-                }else {
-
-                    VojtechhCardBellow.startAnimation(animationFadeOut);
-                    VojtechhArrow.animate().rotation(0).start();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            VojtechhCardBellow.setVisibility(View.GONE);
-
-                        }
-                    }, 100);
-                    isVojtechhHidden = true;
-                }
-            }
-        });
+        final ImageView closeButton = (ImageView) findViewById(R.id.closeButton);
 
         EvoWizzCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,19 +67,46 @@ public class AboutActivity extends AppCompatActivity {
                 if (isEvoWizzHidden){
                     EvoWizzCardBellow.startAnimation(animationFadeIn);
                     EvoWizzCardBellow.setVisibility(View.VISIBLE);
-                    EvoWizzArrow.animate().rotation(180).start();
+                    EvoWizzArrow.animate().rotation(0).start();
+                    seperator.setVisibility(View.GONE);
                     isEvoWizzHidden = false;
                 }else {
 
                     EvoWizzCardBellow.startAnimation(animationFadeOut);
-                    EvoWizzArrow.animate().rotation(0).start();
+                    EvoWizzArrow.animate().rotation(-90).start();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             EvoWizzCardBellow.setVisibility(View.GONE);
+                            seperator.setVisibility(View.VISIBLE);
                         }
                     }, 100);
                     isEvoWizzHidden = true;
+                }
+            }
+        });
+
+        VojtechhCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isVojtechhHidden){
+                    VojtechhCardBellow.startAnimation(animationFadeIn);
+                    VojtechhCardBellow.setVisibility(View.VISIBLE);
+                    VojtechhArrow.animate().rotation(0).start();
+                    isVojtechhHidden = false;
+
+                }else {
+
+                    VojtechhCardBellow.startAnimation(animationFadeOut);
+                    VojtechhArrow.animate().rotation(-90).start();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            VojtechhCardBellow.setVisibility(View.GONE);
+
+                        }
+                    }, 100);
+                    isVojtechhHidden = true;
                 }
             }
         });
@@ -135,6 +141,13 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/+VojtěchHořánek"));
                 startActivity(i);
+            }
+        });
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

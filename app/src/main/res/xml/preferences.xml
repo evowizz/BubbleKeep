@@ -18,5 +18,11 @@
             android:summary="If you wan't a new icon in the launcher you are at the right place"
             android:title="Launcher icon style" />
 
+        <CheckBoxPreference
+            android:key="navbarcolor"
+            android:defaultValue="true"
+            android:title="Color navigation bar"
+            android:summary="Make the navigation bar orange (if you have one)"/>
+
     </PreferenceCategory>
 </PreferenceScreen>

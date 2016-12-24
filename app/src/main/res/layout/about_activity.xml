@@ -68,12 +68,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/VoxLogo"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dip"
+                android:textColor="?android:attr/colorAccent"
+                android:textSize="@dimen/text_size_body_2_material"
+                android:fontFamily="sans-serif-medium"
                 android:paddingStart="16dp"
-                android:text="Developers"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold" />
+                android:paddingEnd="16dp"
+                android:paddingTop="16dip"
+                android:layout_marginTop="8dp"
+                android:text="Developers" />
 
 
             <!--EvoWizz starts here!-->
@@ -87,12 +90,14 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/aboutItem">
 
-                <ImageView
-                    android:id="@+id/EvoWizz_profile_image"
+                <cf.VoxStudio.bubblekeep.RoundedImageView
                     android:layout_width="50dp"
-                    android:layout_height="96dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/evowizz"
+                    android:id="@+id/EvoWizz_profile_image"
+                    android:layout_centerVertical="true"
                     android:layout_alignParentStart="true"
-                    android:src="@drawable/evowizz" />
+                    android:scaleType="fitCenter" />
 
                 <ImageView
                     android:id="@+id/EvoWizz_arrow"
@@ -229,14 +234,6 @@
                 android:background="@color/aboutItem">
 
                 <ImageView
-                    android:id="@+id/vojtechh_profile_image"
-                    android:layout_width="50dp"
-                    android:layout_height="96dp"
-                    android:layout_alignParentStart="true"
-                    android:src="@drawable/vojtechh" />
-
-
-                <ImageView
                     android:id="@+id/vojtechh_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -249,6 +246,7 @@
                     android:src="@drawable/ic_keyboard_arrow_down"
                     android:rotation="-90"/>
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -260,6 +258,15 @@
                     android:textColor="@color/aboutTextColor"
                     android:textSize="18sp" />
 
+                <cf.VoxStudio.bubblekeep.RoundedImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/vojtechh"
+                    android:id="@+id/vojtechh_profile_image"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:scaleType="centerCrop" />
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -267,8 +274,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/vojtechh_card"
-                android:layout_marginEnd="0dp"
-                android:layout_marginStart="0dp"
                 android:background="@color/aboutDropDown"
                 android:paddingStart="16dp"
                 android:visibility="gone">
@@ -276,8 +281,7 @@
                 <RelativeLayout
                     android:id="@+id/vojtechh_twitter"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="8dp"
                     android:background="@color/aboutDropDown">
 
@@ -315,7 +319,7 @@
                 <RelativeLayout
                     android:id="@+id/vojtechh_google"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_below="@id/vojtechh_twitter"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"

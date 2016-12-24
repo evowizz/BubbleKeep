@@ -7,4 +7,6 @@
     <dimen name="standard_padding_small">4dp</dimen>
     <dimen name="standard_padding">8dp</dimen>
     <dimen name="standard_padding_large">16dp</dimen>
+    <dimen name="text_size_body_2_material">14sp</dimen>
+
 </resources>

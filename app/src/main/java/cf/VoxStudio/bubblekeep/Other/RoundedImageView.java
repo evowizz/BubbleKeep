@@ -1,4 +1,4 @@
-package cf.VoxStudio.bubblekeep;
+package cf.VoxStudio.bubblekeep.Other;
 
 import android.content.Context;
 import android.graphics.Bitmap;

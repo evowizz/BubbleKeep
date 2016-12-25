@@ -85,11 +85,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_below="@id/developers_cat"
-                android:layout_marginTop="0dp"
                 android:background="?attr/selectableItemBackground"
                 android:elevation="4px">
 
-                <cf.VoxStudio.bubblekeep.RoundedImageView
+                <cf.VoxStudio.bubblekeep.Other.RoundedImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/evowizz"
@@ -253,7 +252,7 @@
                     android:textColor="@color/aboutTextColor"
                     android:textSize="18sp" />
 
-                <cf.VoxStudio.bubblekeep.RoundedImageView
+                <cf.VoxStudio.bubblekeep.Other.RoundedImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/vojtechh"
@@ -376,7 +375,7 @@
                 android:layout_below="@id/thanksto_text"
                 android:background="?attr/selectableItemBackground">
 
-                <cf.VoxStudio.bubblekeep.RoundedImageView
+                <cf.VoxStudio.bubblekeep.Other.RoundedImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/alexandre_piveteau"

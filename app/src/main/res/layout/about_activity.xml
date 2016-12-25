@@ -358,7 +358,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/vojtechh_card_bellow"
                 android:layout_marginBottom="8dip"
-                android:textColor="?android:attr/colorAccent"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/text_size_body_2_material"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="16dp"

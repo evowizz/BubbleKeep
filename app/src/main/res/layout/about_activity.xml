@@ -353,7 +353,7 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/thanksto_text"
+                android:id="@+id/thanksto_cat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/vojtechh_card_bellow"
@@ -372,7 +372,7 @@
                 android:id="@+id/ap_card"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_below="@id/thanksto_text"
+                android:layout_below="@id/thanksto_cat"
                 android:background="?attr/selectableItemBackground">
 
                 <cf.VoxStudio.bubblekeep.Other.RoundedImageView

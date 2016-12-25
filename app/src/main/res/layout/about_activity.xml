@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_close"
-                android:background="?attr/selectableItemBackground"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_alignParentStart="true"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"/>
@@ -32,9 +32,9 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-
                 android:gravity="center"
                 android:text="About"
+                android:paddingEnd="72dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="#ffffff"
                 android:layout_toEndOf="@id/closeButton"/>
@@ -61,10 +61,10 @@
                 android:paddingEnd="16dp"
                 android:paddingStart="16dp"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/ic_vox_studio" />
+                android:src="@drawable/ic_vox_studio" />
 
             <TextView
-                android:id="@+id/developers_text"
+                android:id="@+id/developers_cat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/VoxLogo"
@@ -83,18 +83,18 @@
             <RelativeLayout
                 android:id="@+id/EvoWizz_card"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@id/developers_text"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/aboutItem">
+                android:layout_height="80dp"
+                android:layout_below="@id/developers_cat"
+                android:layout_marginTop="0dp"
+                android:background="?attr/selectableItemBackground"
+                android:elevation="4px">
 
                 <cf.VoxStudio.bubblekeep.RoundedImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/evowizz"
                     android:id="@+id/EvoWizz_profile_image"
+                    android:layout_marginStart="16dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="true"
                     android:scaleType="fitCenter" />
@@ -109,8 +109,7 @@
                     android:maxHeight="20dp"
                     android:maxWidth="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_keyboard_arrow_down"
-                    android:rotation="-90"/>
+                    android:src="@drawable/ic_keyboard_arrow_down" />
 
 
                 <TextView
@@ -226,12 +225,9 @@
             <RelativeLayout
                 android:id="@+id/vojtechh_card"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="80dp"
                 android:layout_below="@id/EvoWizz_card_bellow"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/aboutItem">
+                android:background="?attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/vojtechh_arrow"
@@ -243,8 +239,7 @@
                     android:maxHeight="20dp"
                     android:maxWidth="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_keyboard_arrow_down"
-                    android:rotation="-90"/>
+                    android:src="@drawable/ic_keyboard_arrow_down" />
 
 
                 <TextView
@@ -264,6 +259,7 @@
                     android:src="@drawable/vojtechh"
                     android:id="@+id/vojtechh_profile_image"
                     android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
                     android:layout_alignParentStart="true"
                     android:scaleType="centerCrop" />
 
@@ -339,6 +335,153 @@
                         android:layout_toEndOf="@id/vojtechh_google_icon"
                         android:gravity="center"
                         android:text="+VojtěchHořánek"
+                        android:textColor="@color/aboutTextColor"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="16dp"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="20dp"
+                        android:maxWidth="20dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_arrow_forward" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/thanksto_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/vojtechh_card_bellow"
+                android:layout_marginBottom="8dip"
+                android:textColor="?android:attr/colorAccent"
+                android:textSize="@dimen/text_size_body_2_material"
+                android:fontFamily="sans-serif-medium"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dip"
+                android:layout_marginTop="8dp"
+                android:text="Thanks to" />
+
+            <!--Alexandre starts here!-->
+            <RelativeLayout
+                android:id="@+id/ap_card"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/thanksto_text"
+                android:background="?attr/selectableItemBackground">
+
+                <cf.VoxStudio.bubblekeep.RoundedImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/alexandre_piveteau"
+                    android:id="@+id/ap_profile_image"
+                    android:layout_marginStart="16dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/ap_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="20dp"
+                    android:maxWidth="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_keyboard_arrow_down" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/ap_profile_image"
+                    android:gravity="center"
+                    android:text="Alexandre Piveteau"
+                    android:textColor="@color/aboutTextColor"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ap_card_bellow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ap_card"
+                android:background="@color/aboutDropDown"
+                android:paddingStart="16dp"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/ap_twitter"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/aboutDropDown">
+
+                    <ImageView
+                        android:id="@+id/ap_twitter_icon"
+                        android:layout_width="45dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:src="@drawable/twitter_logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@+id/ap_twitter_icon"
+                        android:gravity="center"
+                        android:text="\@c4di4l3x"
+                        android:textColor="@color/aboutTextColor"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="16dp"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="20dp"
+                        android:maxWidth="20dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_arrow_forward" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/ap_google"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/ap_twitter"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/aboutDropDown">
+
+                    <ImageView
+                        android:id="@+id/ap_google_icon"
+                        android:layout_width="45dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:src="@drawable/google_plus_logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@id/ap_google_icon"
+                        android:gravity="center"
+                        android:text="+AlexandrePiveteau"
                         android:textColor="@color/aboutTextColor"
                         android:textSize="18sp" />
 

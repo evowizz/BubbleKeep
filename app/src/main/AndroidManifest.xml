@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
 
     <application
@@ -68,6 +67,7 @@
             android:theme="@style/Theme.Intro" />
 
         <activity android:name=".AboutActivity" />
+        <activity android:name=".AboutActivityTest" />
 
         <service
             android:name=".Services.BubbleKeepTileService"
@@ -90,9 +90,7 @@
             </intent-filter>
         </service>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="a907d0ac603df08b4d96af6adb39c0e7449d92c4" />
+
     </application>
 
 </manifest>

@@ -7,4 +7,4 @@ Bubble Keep is an always hovering bubble to take quick notes with Google keep. H
 
 ----
 ## Where to get a working apk ?
-You can grab the apk in the **/apk** folder (or [CLICKHERE](https://github.com/VoxStudio/BubbleKeep/tree/master/apk) ), but keep in mind that it's unfinished at all, and there are still little bugs.
+You can grab the apk in the **/apk** folder (or [CLICKHERE](https://github.com/VoxStudio/BubbleKeep/tree/master/apk) ), but keep in mind that it's not finished at all, and there are still little bugs.
